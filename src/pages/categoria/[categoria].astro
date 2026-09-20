@@ -1,0 +1,141 @@
+---
+/**
+ * src/pages/categoria/[categoria].astro
+ * Vista de listado por categoría
+ */
+import { getCollection } from 'astro:content';
+import Header from '../../components/Header.astro';
+import NewsCard from '../../components/NewsCard.astro';
+
+export async function getStaticPaths() {
+  function slugify(text: string) {
+    return text
+      .toString()
+      .toLowerCase()
+      .normalize('NFD') // separa acentos
+      .replace(/[\u0300-\u036f]/g, '') // elimina acentos
+      .replace(/\s+/g, '-') // espacios a guiones
+      .replace(/&/g, 'y') // ampersand a 'y'
+      .replace(/[^\w\-]+/g, '') // elimina no alfanuméricos
+      .replace(/\-\-+/g, '-') // elimina guiones múltiples
+      .replace(/^-+/, '') // recorta guiones al inicio
+      .replace(/-+$/, ''); // recorta guiones al final
+  }
+
+  const allNews = await getCollection('noticias');
+  
+  // Extraemos todas las categorías únicas que están en uso
+  const categories = [...new Set(allNews.map((n) => n.data.category))];
+
+  return categories.map((category) => {
+    return {
+      params: { categoria: slugify(category) },
+      props: { categoryName: category },
+    };
+  });
+}
+
+const { categoryName } = Astro.props;
+const currentSlug = Astro.params.categoria;
+
+// Filtramos las noticias por esta categoría y las ordenamos por fecha
+const allNews = await getCollection('noticias');
+const categoryNews = allNews
+  .filter((n) => n.data.category === categoryName)
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+
+// Función de formateo de fechas
+function formatTimeAgo(date: Date) {
+  const diffMs = new Date().getTime() - date.getTime();
+  const diffHrs = Math.floor(diffMs / (1000 * 60 * 60));
+  if (diffHrs < 24 && diffHrs > 0) return `Hace ${diffHrs} horas`;
+  if (diffHrs === 0) return 'Hace instantes';
+  return date.toLocaleDateString('es-AR');
+}
+---
+
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{categoryName} — Faro Energético / Noticias VMOS</title>
+  <meta name="description" content={`Últimas noticias sobre ${categoryName} en el portal Faro Energético.`} />
+
+  <!-- Google Fonts: Oswald + Source Sans 3 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Material Symbols Outlined -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+
+  <Header activeSection={currentSlug} />
+
+  <main class="flex-grow max-w-[1440px] w-full mx-auto px-4 lg:px-8 py-8">
+    
+    <!-- Encabezado de la página de categoría -->
+    <div class="mb-10 border-b-4 border-primary pb-4 inline-block pr-8">
+      <span class="text-secondary font-label-ticker text-sm font-bold tracking-wider uppercase block mb-1">
+        SECCIÓN
+      </span>
+      <h1 class="font-headline-lg text-4xl lg:text-5xl uppercase tracking-tight text-primary">
+        {categoryName}
+      </h1>
+    </div>
+
+    <!-- Grilla de noticias (3 columnas por defecto) -->
+    {categoryNews.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {categoryNews.map((noticia, index) => (
+          <div class="flex flex-col border border-outline-variant/50 rounded overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-surface-container-lowest">
+            <NewsCard
+              variant={index === 0 && noticia.data.coverImage ? 'hero' : 'trend'} // Hacemos la primera más grande si tiene imagen
+              section={noticia.data.section || noticia.data.category}
+              tag={noticia.data.tag}
+              headline={noticia.data.title}
+              subheadline={noticia.data.description}
+              excerpt={noticia.data.description}
+              imageUrl={noticia.data.coverImage?.url}
+              imageAlt={noticia.data.coverImage?.alt}
+              author={noticia.data.author}
+              timeAgo={formatTimeAgo(noticia.data.publishedAt)}
+              readingMinutes={noticia.data.readingMinutes}
+              href={`/noticias/${noticia.slug}`}
+            />
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="py-12 text-center text-on-surface-variant bg-surface-container-low rounded border border-outline-variant/60">
+        <span class="material-symbols-outlined text-4xl mb-2 text-outline">article</span>
+        <p class="font-body-lg text-lg">No hay artículos publicados en esta sección aún.</p>
+      </div>
+    )}
+
+  </main>
+
+  <footer class="w-full py-8 px-6 border-t-2 border-secondary bg-primary text-on-primary mt-auto">
+    <div class="max-w-[1440px] mx-auto text-center font-label-caption text-xs text-primary-fixed-dim">
+      <p>© 2025 Faro Energético / Noticias VMOS. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

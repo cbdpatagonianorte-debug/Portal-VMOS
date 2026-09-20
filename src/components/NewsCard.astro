@@ -1,0 +1,257 @@
+---
+/**
+ * NewsCard.astro — Tarjeta editorial del portal Faro Energético.
+ * Soporta tres variantes:
+ *   - "hero"   → Artículo destacado central (16:9, headline-lg, KPI bar)
+ *   - "trend"  → Tarjeta lateral de tendencias (imagen 16:10 + número de orden)
+ *   - "wire"   → Despacho urgente de texto (sin imagen, hora + categoría)
+ */
+
+export interface Props {
+  variant?: 'hero' | 'trend' | 'wire';
+  /** Número ordinal visible (solo en variant="trend") */
+  order?: number;
+  /** Badge de sección: 'SIERRA GRANDE' | 'PLAYAS DORADAS' | 'LOGÍSTICA' | etc. */
+  section: string;
+  /** Etiqueta secundaria: 'EXCLUSIVO / VMOS' | 'INFORME ESPECIAL' | 'ÚLTIMO MOMENTO' | etc. */
+  tag?: string;
+  /** ¿Badge rojo de urgencia? */
+  isBreaking?: boolean;
+  headline: string;
+  subheadline?: string;
+  /** Extracto de cuerpo (se limita con line-clamp) */
+  excerpt?: string;
+  /** URL de la imagen de portada */
+  imageUrl?: string;
+  imageAlt?: string;
+  /** Tiempo relativo: 'Hace 2 horas' | 'Hace 15 min' | 'Ayer' */
+  timeAgo?: string;
+  /** Hora exacta para wire items: '11:42' */
+  time?: string;
+  /** Autor o redacción */
+  author?: string;
+  /** Tiempo de lectura en minutos (hero) */
+  readingMinutes?: number;
+  href?: string;
+  /** KPIs opcionales para hero */
+  kpis?: Array<{ icon: string; label: string; value: string }>;
+}
+
+const {
+  variant = 'trend',
+  order,
+  section,
+  tag,
+  isBreaking = false,
+  headline,
+  subheadline,
+  excerpt,
+  imageUrl,
+  imageAlt = '',
+  timeAgo,
+  time,
+  author,
+  readingMinutes,
+  href = '#',
+  kpis = [],
+} = Astro.props;
+---
+
+{variant === 'hero' && (
+  <article class="bg-surface-container-lowest border border-outline-variant rounded overflow-hidden shadow-sm flex flex-col">
+    <!-- Imagen hero con badges flotantes -->
+    <div class="relative w-full aspect-[16/9] bg-primary-container overflow-hidden group">
+      {imageUrl && (
+        <img
+          src={imageUrl}
+          alt={imageAlt}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="eager"
+        />
+      )}
+
+      <!-- Badges superiores -->
+      <div class="absolute top-4 left-4 flex flex-wrap items-center gap-2 z-10">
+        {tag && (
+          <span class="bg-[#D97706] text-white font-label-ticker text-xs font-bold px-2.5 py-1 tracking-wider uppercase rounded shadow flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm">verified</span>
+            {tag}
+          </span>
+        )}
+        <span class="bg-primary/90 text-on-primary font-label-ticker text-xs font-medium px-2 py-1 tracking-wide rounded backdrop-blur-sm flex items-center gap-1.5 shadow">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 live-pulse"></span>
+          {section}
+        </span>
+      </div>
+
+      <!-- Botón play centrado -->
+      <div class="absolute inset-0 flex items-center justify-center">
+        <button
+          aria-label="Reproducir informe audiovisual"
+          class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-primary/80 hover:bg-secondary text-on-primary flex items-center justify-center transition-all transform hover:scale-110 shadow-lg border border-white/30 backdrop-blur-sm"
+          type="button"
+        >
+          <span class="material-symbols-outlined text-3xl sm:text-4xl pl-0.5">play_arrow</span>
+        </button>
+      </div>
+
+      <!-- Crédito fotográfico -->
+      <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent p-3 pt-6 flex justify-between items-end text-xs text-primary-fixed font-label-caption">
+        <span>Vista aérea: Terminal Punta Colorada y boyas de amarre proyectadas</span>
+        <span>Foto: Corresponsalía Faro</span>
+      </div>
+    </div>
+
+    <!-- Cuerpo editorial -->
+    <div class="p-5 sm:p-6 lg:p-7 flex flex-col flex-grow">
+      <!-- Supertítulo -->
+      <div class="flex items-center gap-2 mb-2 font-label-caption text-label-caption text-outline">
+        {tag && <span class="font-bold text-[#D97706] tracking-wide uppercase">{tag}</span>}
+        {tag && <span>•</span>}
+        <span class="uppercase">{section}</span>
+        {readingMinutes && (
+          <>
+            <span>•</span>
+            <span class="flex items-center gap-1">
+              <span class="material-symbols-outlined text-xs">timer</span>
+              {readingMinutes} min de lectura
+            </span>
+          </>
+        )}
+      </div>
+
+      <!-- Titular principal -->
+      <h1 class="font-headline-lg text-headline-lg text-primary leading-tight tracking-tight uppercase hover:text-secondary transition-colors cursor-pointer mb-3">
+        <a href={href}>{headline}</a>
+      </h1>
+
+      <!-- Bajada -->
+      {subheadline && (
+        <p class="font-body-lead text-body-lead text-on-surface-variant font-normal leading-relaxed mb-4">
+          {subheadline}
+        </p>
+      )}
+
+      <!-- Byline -->
+      <div class="flex flex-wrap items-center justify-between gap-y-2 py-3 border-y border-outline-variant text-xs text-on-surface-variant font-label-caption mb-5">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-fixed font-bold flex items-center justify-center text-[10px]">
+            FE
+          </span>
+          {author && <span class="text-primary font-semibold">{author}</span>}
+        </div>
+        {timeAgo && (
+          <div class="flex items-center gap-1 text-outline">
+            <span class="material-symbols-outlined text-xs">update</span>
+            <span>Actualizado {timeAgo}</span>
+          </div>
+        )}
+      </div>
+
+      <!-- Barra de KPIs -->
+      {kpis.length > 0 && (
+        <div class="bg-surface-container-low border border-outline-variant/60 rounded p-3 sm:p-4 grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+          {kpis.map((kpi, i) => (
+            <div class={`flex items-start gap-2.5 ${i > 0 ? 'border-t sm:border-t-0 sm:border-l border-outline-variant/60 pt-2 sm:pt-0 sm:pl-3' : ''}`}>
+              <div class={`p-1.5 ${i === 0 ? 'bg-primary text-on-primary' : 'bg-secondary text-on-secondary'} rounded`}>
+                <span class="material-symbols-outlined text-base">{kpi.icon}</span>
+              </div>
+              <div>
+                <span class="block font-label-caption text-[11px] text-outline uppercase tracking-wider">{kpi.label}</span>
+                <span class="font-headline-sm text-headline-sm text-primary font-bold">{kpi.value}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <!-- Extracto -->
+      {excerpt && (
+        <p class="font-body-md text-body-md text-on-surface leading-normal text-justify">
+          {excerpt}
+        </p>
+      )}
+
+      <!-- Acciones -->
+      <div class="mt-4 pt-3 flex items-center justify-between">
+        <a
+          href={href}
+          class="inline-flex items-center gap-1.5 text-secondary hover:text-primary font-label-ticker text-sm font-bold transition-colors"
+        >
+          <span>Continuar leyendo el reportaje integral</span>
+          <span class="material-symbols-outlined text-sm">trending_flat</span>
+        </a>
+        <div class="flex items-center gap-1">
+          <button aria-label="Compartir" class="p-1.5 text-outline hover:text-primary rounded hover:bg-surface-container" type="button">
+            <span class="material-symbols-outlined text-base">share</span>
+          </button>
+          <button aria-label="Guardar" class="p-1.5 text-outline hover:text-primary rounded hover:bg-surface-container" type="button">
+            <span class="material-symbols-outlined text-base">bookmark_border</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+)}
+
+{variant === 'trend' && (
+  <article class="pt-2 pb-5 group cursor-pointer">
+    {imageUrl && (
+      <div class="relative overflow-hidden rounded mb-3 aspect-[16/10] bg-surface-container">
+        <img
+          src={imageUrl}
+          alt={imageAlt}
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          loading="lazy"
+        />
+        <!-- Overlay play -->
+        <div class="absolute top-2 left-2 w-8 h-8 bg-primary/80 backdrop-blur-sm text-on-primary rounded flex items-center justify-center shadow">
+          <span class="material-symbols-outlined text-sm">play_arrow</span>
+        </div>
+      </div>
+    )}
+
+    <!-- Meta: orden + tiempo + sección -->
+    <div class="flex items-center gap-2 mb-1.5">
+      {order && (
+        <span class="font-headline-sm text-secondary font-bold text-lg leading-none">
+          {String(order).padStart(2, '0')}
+        </span>
+      )}
+      {timeAgo && (
+        <span class="font-label-caption text-label-caption text-outline">{timeAgo}</span>
+      )}
+      <span class="text-outline">•</span>
+      <span class="font-label-ticker text-xs text-primary-container font-semibold uppercase">{section}</span>
+    </div>
+
+    <h3 class="font-title-editorial text-title-editorial text-primary group-hover:text-secondary transition-colors">
+      <a href={href}>{headline}</a>
+    </h3>
+
+    {excerpt && (
+      <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">{excerpt}</p>
+    )}
+  </article>
+)}
+
+{variant === 'wire' && (
+  <article class="py-3 group cursor-pointer">
+    <!-- Hora + categoría -->
+    <div class="flex items-center gap-2 text-label-caption font-label-caption text-outline mb-1">
+      {time && <span class="text-error font-bold">{time}</span>}
+      <span>•</span>
+      <span class={`font-label-ticker text-[11px] font-semibold ${isBreaking ? 'text-error' : 'text-primary'}`}>
+        {section}
+      </span>
+    </div>
+
+    <h3 class="font-title-editorial text-title-editorial text-primary group-hover:text-secondary transition-colors leading-snug">
+      <a href={href}>{headline}</a>
+    </h3>
+
+    {excerpt && (
+      <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">{excerpt}</p>
+    )}
+  </article>
+)}

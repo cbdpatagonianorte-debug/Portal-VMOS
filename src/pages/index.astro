@@ -1,0 +1,384 @@
+---
+/**
+ * index.astro — Landing del portal Faro Energético / Noticias VMOS
+ * Layout de revista: grilla 3+6+3 (25%-50%-25%) + monitor regional + footer.
+ */
+import { getCollection } from 'astro:content';
+import Header from '../components/Header.astro';
+import NewsCard from '../components/NewsCard.astro';
+
+// 1. Obtener todas las noticias de la colección
+const allNews = await getCollection('noticias');
+
+// 2. Filtrar y ordenar para la portada
+
+// Hero (columna central): tomamos el primero con variant 'hero'
+const heroArticle = allNews.find(n => n.data.cardVariant === 'hero');
+
+// Tendencias (columna izquierda): filtramos por 'trend' y ordenamos por featuredOrder
+const trendCards = allNews
+  .filter(n => n.data.cardVariant === 'trend')
+  .sort((a, b) => (a.data.featuredOrder || 99) - (b.data.featuredOrder || 99))
+  .slice(0, 3); // Máximo 3 para el layout
+
+// Despachos (columna derecha): filtramos por 'wire' y ordenamos por fecha de publicación (más recientes primero)
+const wireItems = allNews
+  .filter(n => n.data.cardVariant === 'wire')
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+  .slice(0, 3); // Máximo 3 para el layout
+
+// Utilidad para formatear fechas de los wireItems (hora:minuto) o "Hace X horas"
+function formatTime(date: Date) {
+  return date.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+}
+function formatTimeAgo(date: Date) {
+  const diffMs = new Date().getTime() - date.getTime();
+  const diffHrs = Math.floor(diffMs / (1000 * 60 * 60));
+  if (diffHrs < 24 && diffHrs > 0) return `Hace ${diffHrs} horas`;
+  if (diffHrs === 0) return 'Hace instantes';
+  return date.toLocaleDateString('es-AR');
+}
+---
+
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faro Energético / Noticias VMOS — Periodismo de Infraestructura y Golfo San Matías</title>
+  <meta name="description" content="Cobertura periodística de alta fidelidad técnica sobre la infraestructura de hidrocarburos, Punta Colorada, Sierra Grande y la transformación costera de Río Negro." />
+
+  <!-- Google Fonts: Oswald + Source Sans 3 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Material Symbols Outlined -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* Material Symbols baseline */
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Animación live pulse */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(1.15); }
+    }
+    .live-pulse {
+      animation: pulse-dot 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-secondary-container selection:text-primary">
+
+  <!-- Cabecera (barra utilitaria + banner + navbar) -->
+  <Header activeSection="punta-colorada" />
+
+  <!-- ============================================================ -->
+  <!-- MAIN: Grilla 3 + 6 + 3 (revista editorial)                   -->
+  <!-- ============================================================ -->
+  <main class="flex-grow max-w-[1440px] w-full mx-auto px-4 lg:px-8 py-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+
+      <!-- ─── COLUMNA IZQUIERDA: Tendencias (3 cols = 25%) ─────────────── -->
+      <section aria-labelledby="heading-tendencias" class="lg:col-span-3 flex flex-col gap-6">
+        <!-- Encabezado de sección -->
+        <div class="flex items-center justify-between border-b-2 border-primary pb-2">
+          <div class="flex items-center gap-2">
+            <span class="inline-block bg-[#E11D48] text-white font-label-ticker text-xs font-bold px-2 py-0.5 tracking-wider rounded-sm">
+              TENDENCIAS
+            </span>
+            <h2 id="heading-tendencias" class="font-headline-sm text-headline-sm uppercase tracking-tight text-primary">
+              En Foco
+            </h2>
+          </div>
+          <span class="text-label-caption font-label-caption text-outline">Golfo & Meseta</span>
+        </div>
+
+        <!-- Tarjetas de tendencias dinámicas -->
+        <div class="flex flex-col divide-y divide-outline-variant/60">
+          {trendCards.map((card, index) => (
+            <NewsCard
+              variant="trend"
+              order={card.data.featuredOrder || index + 1}
+              section={card.data.section || card.data.category}
+              headline={card.data.title}
+              excerpt={card.data.description}
+              timeAgo={formatTimeAgo(card.data.publishedAt)}
+              imageUrl={card.data.coverImage?.url}
+              imageAlt={card.data.coverImage?.alt}
+              href={`/noticias/${card.slug}`}
+            />
+          ))}
+        </div>
+
+        <!-- Banner callout de boletín editorial -->
+        <div class="bg-surface-container border-l-4 border-secondary p-4 rounded-r mt-2">
+          <span class="font-label-ticker text-xs text-secondary font-bold uppercase tracking-wider block mb-1">
+            BOLETÍN EDITORIAL
+          </span>
+          <p class="font-body-sm text-body-sm text-on-surface font-semibold leading-snug">
+            Reciba el reporte semanal con el avance de soldadura de tuberías y cronogramas de dragado en Punta Colorada.
+          </p>
+          <a href="#newsletter" class="inline-flex items-center gap-1 mt-2 text-xs font-label-ticker font-bold text-primary hover:text-secondary">
+            Inscribirse ahora
+            <span class="material-symbols-outlined text-xs">arrow_forward</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ─── COLUMNA CENTRAL: Hero artículo (6 cols = 50%) ───────────── -->
+      <section aria-labelledby="main-headline" class="lg:col-span-6 flex flex-col">
+        {heroArticle && (
+          <NewsCard
+            variant="hero"
+            section={heroArticle.data.section || heroArticle.data.category}
+            tag={heroArticle.data.tag}
+            headline={heroArticle.data.title}
+            subheadline={heroArticle.data.description}
+            excerpt={heroArticle.data.description}
+            imageUrl={heroArticle.data.coverImage?.url}
+            imageAlt={heroArticle.data.coverImage?.alt}
+            author={heroArticle.data.author}
+            timeAgo={formatTimeAgo(heroArticle.data.publishedAt)}
+            readingMinutes={heroArticle.data.readingMinutes}
+            kpis={heroArticle.data.kpis}
+            href={`/noticias/${heroArticle.slug}`}
+          />
+        )}
+      </section>
+
+      <!-- ─── COLUMNA DERECHA: Despachos + Monitor VMOS (3 cols = 25%) ── -->
+      <section aria-labelledby="heading-ultimas" class="lg:col-span-3 flex flex-col gap-6">
+        <!-- Encabezado de sección -->
+        <div class="flex items-center justify-between border-b-2 border-primary pb-2">
+          <div class="flex items-center gap-2">
+            <span class="inline-block bg-error text-white font-label-ticker text-xs font-bold px-2 py-0.5 tracking-wider rounded-sm live-pulse">
+              ÚLTIMO MOMENTO
+            </span>
+            <h2 id="heading-ultimas" class="font-headline-sm text-headline-sm uppercase tracking-tight text-primary">
+              Despachos
+            </h2>
+          </div>
+          <span class="material-symbols-outlined text-error text-sm">sensors</span>
+        </div>
+
+        <!-- Feed de wire items dinámicos -->
+        <div class="flex flex-col divide-y divide-outline-variant/60">
+          {wireItems.map((item) => (
+            <NewsCard
+              variant="wire"
+              section={item.data.section || item.data.category}
+              headline={item.data.title}
+              excerpt={item.data.description}
+              time={formatTime(item.data.publishedAt)}
+              isBreaking={item.data.isBreaking}
+              href={`/noticias/${item.slug}`}
+            />
+          ))}
+        </div>
+
+        <!-- ─── DARK WIDGET: Monitor Energético VMOS ─────────────────── -->
+        <div class="bg-primary-container text-on-primary rounded border border-outline-variant/30 p-4 shadow-md flex flex-col relative overflow-hidden">
+          <!-- Ícono de fondo decorativo -->
+          <div class="absolute -right-6 -bottom-6 text-surface-tint/20 pointer-events-none">
+            <span class="material-symbols-outlined text-[110px]">analytics</span>
+          </div>
+
+          <!-- Header del widget -->
+          <div class="flex items-center justify-between border-b border-primary-fixed-dim/20 pb-2.5 mb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-secondary-container live-pulse"></span>
+              <h3 class="font-headline-sm text-headline-sm tracking-tight text-on-primary uppercase">
+                MONITOR ENERGÉTICO VMOS
+              </h3>
+            </div>
+            <span class="material-symbols-outlined text-secondary-fixed text-lg">radar</span>
+          </div>
+
+          <!-- Métricas -->
+          <div class="flex flex-col gap-3 text-xs z-10">
+            <!-- Barra de avance -->
+            <div class="bg-primary/50 p-2.5 rounded border border-outline-variant/20">
+              <div class="flex justify-between items-center mb-1.5 font-label-ticker text-label-ticker">
+                <span class="text-primary-fixed">Avance del Oleoducto:</span>
+                <span class="text-secondary-fixed font-bold text-sm">65%</span>
+              </div>
+              <div class="w-full bg-primary h-2 rounded-full overflow-hidden border border-outline-variant/40">
+                <div class="bg-gradient-to-r from-secondary-container to-secondary h-full rounded-full w-[65%]"></div>
+              </div>
+              <span class="text-[10px] text-primary-fixed-dim mt-1 block">
+                Tramo Allen – Chelforó finalizado; cruce a costa en progreso.
+              </span>
+            </div>
+
+            <!-- Estado monoboyas -->
+            <div class="bg-primary/50 p-2.5 rounded border border-outline-variant/20">
+              <span class="font-label-ticker text-primary-fixed-dim block text-[11px]">SISTEMA DE AMARRE ULTRAMARINO</span>
+              <span class="font-semibold text-on-primary block mt-0.5">Monoboyas: En licitación y fondeo técnico</span>
+              <span class="text-[11px] text-secondary-fixed">Profundidad operativa: 40 metros</span>
+            </div>
+
+            <!-- Grid de KPIs rápidos -->
+            <div class="grid grid-cols-2 gap-2 text-center">
+              <div class="bg-primary/60 p-2 rounded border border-outline-variant/20">
+                <span class="text-[10px] text-primary-fixed-dim block font-label-caption">Inversión Estimada</span>
+                <span class="font-headline-sm text-headline-sm font-bold text-secondary-fixed">U$S 2.500M</span>
+              </div>
+              <div class="bg-primary/60 p-2 rounded border border-outline-variant/20">
+                <span class="text-[10px] text-primary-fixed-dim block font-label-caption">Buques Proyectados</span>
+                <span class="font-headline-sm text-headline-sm font-bold text-on-primary">12 VLCC / mes</span>
+              </div>
+            </div>
+
+            <!-- CTA descarga PDF -->
+            <button
+              class="w-full mt-2 bg-secondary hover:bg-secondary-container text-on-secondary hover:text-on-secondary-fixed py-2 px-3 rounded font-label-ticker text-xs font-bold flex items-center justify-center gap-1.5 transition-colors shadow"
+              type="button"
+            >
+              <span class="material-symbols-outlined text-sm">download</span>
+              <span>Descargar Informe Semanal PDF</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- MONITOR REGIONAL: Ecosistema Costero & Minero               -->
+  <!-- ============================================================ -->
+  <section class="w-full bg-surface-container border-y border-outline-variant/60 py-6 my-4 px-4 lg:px-8">
+    <div class="max-w-[1440px] mx-auto">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="font-headline-md text-headline-md uppercase tracking-tight text-primary">
+            Ecosistema Costero & Minero
+          </h2>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">
+            Datos operacionales, mareas astronómicas y flujo vehicular entre el puerto y la Ruta 3.
+          </p>
+        </div>
+        <a href="#estadisticas" class="hidden sm:inline-flex items-center gap-1 text-secondary font-label-ticker text-xs font-bold hover:underline">
+          Ver panel de control regional
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Mareas -->
+        <div class="bg-surface-container-lowest p-4 rounded border border-outline-variant">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-label-ticker text-xs font-bold text-primary">GOLFO SAN MATÍAS / MAREAS</span>
+            <span class="material-symbols-outlined text-secondary">tsunami</span>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="font-headline-md text-headline-md text-primary">8.4 m</span>
+            <span class="text-xs text-on-surface-variant font-label-caption">Amplitud máxima hoy</span>
+          </div>
+          <p class="font-body-sm text-xs text-outline mt-1">
+            Condiciones náuticas óptimas para buques de soporte y batimetría preliminar.
+          </p>
+        </div>
+
+        <!-- Viento -->
+        <div class="bg-surface-container-lowest p-4 rounded border border-outline-variant">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-label-ticker text-xs font-bold text-primary">SIERRA GRANDE / VIENTO</span>
+            <span class="material-symbols-outlined text-secondary">air</span>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="font-headline-md text-headline-md text-primary">34 km/h</span>
+            <span class="text-xs text-secondary-container font-label-caption font-bold">Ráfagas a 55 km/h</span>
+          </div>
+          <p class="font-body-sm text-xs text-outline mt-1">
+            Operaciones de soldadura en trinchera con protección de biombos cortaviento.
+          </p>
+        </div>
+
+        <!-- Campamentos -->
+        <div class="bg-surface-container-lowest p-4 rounded border border-outline-variant">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-label-ticker text-xs font-bold text-primary">CAMPAMENTOS ACTIVOS</span>
+            <span class="material-symbols-outlined text-secondary">engineering</span>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="font-headline-md text-headline-md text-primary">480</span>
+            <span class="text-xs text-emerald-600 font-label-caption font-semibold">+120 esta semana</span>
+          </div>
+          <p class="font-body-sm text-xs text-outline mt-1">
+            Ingenieros civiles, operarios viales y cuadrillas de tendido de fibra óptica.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER                                                        -->
+  <!-- ============================================================ -->
+  <footer class="w-full py-12 px-6 lg:px-12 border-t-2 border-secondary bg-primary text-on-primary">
+    <div class="max-w-[1440px] mx-auto flex flex-col gap-8">
+
+      <!-- Marca + suscripción -->
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-b border-primary-fixed-dim/20 pb-8">
+        <div>
+          <div class="text-headline-md font-headline-md uppercase tracking-wider text-on-primary mb-2">
+            FARO ENERGÉTICO / NOTICIAS VMOS
+          </div>
+          <p class="font-body-sm text-body-sm text-primary-fixed-dim max-w-2xl">
+            Cobertura periodística de alta fidelidad técnica sobre la infraestructura de hidrocarburos, desarrollo de Punta Colorada, el pulso social de Sierra Grande y la transformación costera de Río Negro.
+          </p>
+        </div>
+        <div class="w-full lg:w-auto flex flex-col sm:flex-row items-center gap-2">
+          <input
+            type="email"
+            placeholder="Su correo corporativo..."
+            class="w-full sm:w-72 bg-surface-container-lowest text-primary text-sm px-3.5 py-2.5 rounded border border-outline-variant focus:outline-none focus:ring-2 focus:ring-secondary"
+          />
+          <button
+            class="w-full sm:w-auto px-5 py-2.5 bg-secondary hover:bg-secondary-container text-on-secondary hover:text-on-secondary-fixed font-label-ticker text-sm font-bold uppercase tracking-wider rounded transition-colors whitespace-nowrap shadow"
+            type="button"
+          >
+            Suscribirse al Boletín
+          </button>
+        </div>
+      </div>
+
+      <!-- Links de navegación de footer -->
+      <div class="flex flex-wrap items-center justify-start gap-x-8 gap-y-3 font-label-ticker text-sm">
+        <a href="#punta-colorada"    class="text-secondary-fixed underline font-medium hover:text-secondary-fixed transition-colors">Terminal Punta Colorada</a>
+        <a href="#oleoducto"         class="text-primary-fixed-dim hover:text-on-primary transition-colors">Monitoreo de Oleoducto</a>
+        <a href="#impacto-ambiental" class="text-primary-fixed-dim hover:text-on-primary transition-colors">Informes de Impacto Ambiental</a>
+        <a href="#sierra-grande"     class="text-primary-fixed-dim hover:text-on-primary transition-colors">Comunidad Sierra Grande</a>
+        <a href="#playas-doradas"    class="text-primary-fixed-dim hover:text-on-primary transition-colors">Mareas Playas Doradas</a>
+        <a href="#privacidad"        class="text-primary-fixed-dim hover:text-on-primary transition-colors">Términos y Privacidad</a>
+        <a href="#contacto"          class="text-primary-fixed-dim hover:text-on-primary transition-colors">Contacto Editorial</a>
+      </div>
+
+      <!-- Copyright y datos legales -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-primary-fixed-dim/10 text-label-caption font-label-caption text-primary-fixed-dim">
+        <p>© 2025 Faro Energético / Noticias VMOS. Periodismo de infraestructura, Golfo San Matías y Patagonia Argentina. Todos los derechos reservados.</p>
+        <div class="flex items-center gap-4 text-xs">
+          <span>Edición Digital N° 1.842</span>
+          <span>•</span>
+          <span>ISSN 2953-481X</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
