@@ -80,7 +80,7 @@ function formatTimeAgo(date: Date) {
   </style>
 </head>
 
-<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-secondary-container selection:text-primary">
+  <body class="bg-background text-on-surface font-sans antialiased min-h-screen flex flex-col selection:bg-secondary-container selection:text-primary">
 
   <!-- Cabecera (barra utilitaria + banner + navbar) -->
   <Header activeSection="punta-colorada" />
@@ -99,7 +99,7 @@ function formatTimeAgo(date: Date) {
             <span class="inline-block bg-[#E11D48] text-white font-label-ticker text-xs font-bold px-2 py-0.5 tracking-wider rounded-sm">
               TENDENCIAS
             </span>
-            <h2 id="heading-tendencias" class="font-headline-sm text-headline-sm uppercase tracking-tight text-primary">
+            <h2 id="heading-tendencias" class="font-sans font-bold text-xl uppercase tracking-tight text-primary">
               En Foco
             </h2>
           </div>
@@ -128,7 +128,7 @@ function formatTimeAgo(date: Date) {
           <span class="font-label-ticker text-xs text-secondary font-bold uppercase tracking-wider block mb-1">
             BOLETÍN EDITORIAL
           </span>
-          <p class="font-body-sm text-body-sm text-on-surface font-semibold leading-snug">
+          <p class="font-sans text-sm text-on-surface font-semibold leading-snug">
             Reciba el reporte semanal con el avance de soldadura de tuberías y cronogramas de dragado en Punta Colorada.
           </p>
           <a href="#newsletter" class="inline-flex items-center gap-1 mt-2 text-xs font-label-ticker font-bold text-primary hover:text-secondary">
@@ -150,6 +150,7 @@ function formatTimeAgo(date: Date) {
             excerpt={heroArticle.data.description}
             imageUrl={heroArticle.data.coverImage?.url}
             imageAlt={heroArticle.data.coverImage?.alt}
+            credit={heroArticle.data.coverImage?.credit}
             author={heroArticle.data.author}
             timeAgo={formatTimeAgo(heroArticle.data.publishedAt)}
             readingMinutes={heroArticle.data.readingMinutes}
@@ -167,7 +168,7 @@ function formatTimeAgo(date: Date) {
             <span class="inline-block bg-error text-white font-label-ticker text-xs font-bold px-2 py-0.5 tracking-wider rounded-sm live-pulse">
               ÚLTIMO MOMENTO
             </span>
-            <h2 id="heading-ultimas" class="font-headline-sm text-headline-sm uppercase tracking-tight text-primary">
+            <h2 id="heading-ultimas" class="font-sans font-bold text-xl uppercase tracking-tight text-primary">
               Despachos
             </h2>
           </div>
@@ -200,7 +201,7 @@ function formatTimeAgo(date: Date) {
           <div class="flex items-center justify-between border-b border-primary-fixed-dim/20 pb-2.5 mb-3">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-secondary-container live-pulse"></span>
-              <h3 class="font-headline-sm text-headline-sm tracking-tight text-on-primary uppercase">
+              <h3 class="font-sans font-bold text-lg tracking-tight text-on-primary uppercase">
                 MONITOR ENERGÉTICO VMOS
               </h3>
             </div>
@@ -234,11 +235,11 @@ function formatTimeAgo(date: Date) {
             <div class="grid grid-cols-2 gap-2 text-center">
               <div class="bg-primary/60 p-2 rounded border border-outline-variant/20">
                 <span class="text-[10px] text-primary-fixed-dim block font-label-caption">Inversión Estimada</span>
-                <span class="font-headline-sm text-headline-sm font-bold text-secondary-fixed">U$S 2.500M</span>
+                <span class="font-sans font-bold text-secondary-fixed text-lg">U$S 2.500M</span>
               </div>
               <div class="bg-primary/60 p-2 rounded border border-outline-variant/20">
                 <span class="text-[10px] text-primary-fixed-dim block font-label-caption">Buques Proyectados</span>
-                <span class="font-headline-sm text-headline-sm font-bold text-on-primary">12 VLCC / mes</span>
+                <span class="font-sans font-bold text-on-primary text-lg">12 VLCC / mes</span>
               </div>
             </div>
 
@@ -264,10 +265,10 @@ function formatTimeAgo(date: Date) {
     <div class="max-w-[1440px] mx-auto">
       <div class="flex items-center justify-between mb-4">
         <div>
-          <h2 class="font-headline-md text-headline-md uppercase tracking-tight text-primary">
+          <h2 class="font-sans font-bold text-2xl uppercase tracking-tight text-primary">
             Ecosistema Costero & Minero
           </h2>
-          <p class="font-body-sm text-body-sm text-on-surface-variant">
+          <p class="font-sans text-sm text-gray-600 font-normal">
             Datos operacionales, mareas astronómicas y flujo vehicular entre el puerto y la Ruta 3.
           </p>
         </div>
@@ -285,10 +286,10 @@ function formatTimeAgo(date: Date) {
             <span class="material-symbols-outlined text-secondary">tsunami</span>
           </div>
           <div class="flex items-baseline gap-2">
-            <span class="font-headline-md text-headline-md text-primary">8.4 m</span>
+            <span class="font-sans font-bold text-primary text-xl">8.4 m</span>
             <span class="text-xs text-on-surface-variant font-label-caption">Amplitud máxima hoy</span>
           </div>
-          <p class="font-body-sm text-xs text-outline mt-1">
+          <p class="font-sans text-xs text-outline mt-1">
             Condiciones náuticas óptimas para buques de soporte y batimetría preliminar.
           </p>
         </div>
@@ -300,10 +301,10 @@ function formatTimeAgo(date: Date) {
             <span class="material-symbols-outlined text-secondary">air</span>
           </div>
           <div class="flex items-baseline gap-2">
-            <span class="font-headline-md text-headline-md text-primary">34 km/h</span>
+            <span class="font-sans font-bold text-primary text-xl">34 km/h</span>
             <span class="text-xs text-secondary-container font-label-caption font-bold">Ráfagas a 55 km/h</span>
           </div>
-          <p class="font-body-sm text-xs text-outline mt-1">
+          <p class="font-sans text-xs text-outline mt-1">
             Operaciones de soldadura en trinchera con protección de biombos cortaviento.
           </p>
         </div>
@@ -315,10 +316,10 @@ function formatTimeAgo(date: Date) {
             <span class="material-symbols-outlined text-secondary">engineering</span>
           </div>
           <div class="flex items-baseline gap-2">
-            <span class="font-headline-md text-headline-md text-primary">480</span>
+            <span class="font-sans font-bold text-primary text-xl">480</span>
             <span class="text-xs text-emerald-600 font-label-caption font-semibold">+120 esta semana</span>
           </div>
-          <p class="font-body-sm text-xs text-outline mt-1">
+          <p class="font-sans text-xs text-outline mt-1">
             Ingenieros civiles, operarios viales y cuadrillas de tendido de fibra óptica.
           </p>
         </div>
@@ -335,10 +336,10 @@ function formatTimeAgo(date: Date) {
       <!-- Marca + suscripción -->
       <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-b border-primary-fixed-dim/20 pb-8">
         <div>
-          <div class="text-headline-md font-headline-md uppercase tracking-wider text-on-primary mb-2">
+          <div class="font-sans text-xl font-bold uppercase tracking-wider text-on-primary mb-2">
             FARO ENERGÉTICO / NOTICIAS VMOS
           </div>
-          <p class="font-body-sm text-body-sm text-primary-fixed-dim max-w-2xl">
+          <p class="font-sans text-sm text-gray-600 font-normal max-w-2xl">
             Cobertura periodística de alta fidelidad técnica sobre la infraestructura de hidrocarburos, desarrollo de Punta Colorada, el pulso social de Sierra Grande y la transformación costera de Río Negro.
           </p>
         </div>

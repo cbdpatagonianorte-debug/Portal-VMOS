@@ -60,7 +60,7 @@ const noticiasCollection = defineCollection({
 
     // Imagen de portada
     coverImage: z.object({
-      url: z.string().url(),
+      url: z.string().url().or(z.string().regex(/^\/.*/)),
       alt: z.string(),
       credit: z.string().optional(),
     }).optional(),

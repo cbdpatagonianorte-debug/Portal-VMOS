@@ -86,6 +86,7 @@ export default {
 
       // ─── Tipografía ───────────────────────────────────────────────────────
       fontFamily: {
+        'sans':               ['"Source Sans 3"', 'Oswald', 'sans-serif'],
         'display':            ['Oswald', 'sans-serif'],
         'headline-lg':        ['Oswald', 'sans-serif'],
         'headline-md':        ['Oswald', 'sans-serif'],

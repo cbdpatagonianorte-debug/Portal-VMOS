@@ -148,6 +148,13 @@ declare module 'astro:content' {
   collection: "noticias";
   data: InferEntrySchema<"noticias">
 } & { render(): Render[".md"] };
+"los-gigantes-del-vmos-tanques-punta-colorada.md": {
+	id: "los-gigantes-del-vmos-tanques-punta-colorada.md";
+  slug: "los-gigantes-del-vmos-tanques-punta-colorada";
+  body: string;
+  collection: "noticias";
+  data: InferEntrySchema<"noticias">
+} & { render(): Render[".md"] };
 "playas-doradas-auge-habitacional.md": {
 	id: "playas-doradas-auge-habitacional.md";
   slug: "playas-doradas-auge-habitacional";
@@ -158,13 +165,6 @@ declare module 'astro:content' {
 "sierra-grande-operarios-vmos.md": {
 	id: "sierra-grande-operarios-vmos.md";
   slug: "sierra-grande-operarios-vmos";
-  body: string;
-  collection: "noticias";
-  data: InferEntrySchema<"noticias">
-} & { render(): Render[".md"] };
-"vmos-avance-punta-colorada.md": {
-	id: "vmos-avance-punta-colorada.md";
-  slug: "vmos-avance-punta-colorada";
   body: string;
   collection: "noticias";
   data: InferEntrySchema<"noticias">

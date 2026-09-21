@@ -24,6 +24,7 @@ export interface Props {
   /** URL de la imagen de portada */
   imageUrl?: string;
   imageAlt?: string;
+  credit?: string;
   /** Tiempo relativo: 'Hace 2 horas' | 'Hace 15 min' | 'Ayer' */
   timeAgo?: string;
   /** Hora exacta para wire items: '11:42' */
@@ -48,6 +49,7 @@ const {
   excerpt,
   imageUrl,
   imageAlt = '',
+  credit = '',
   timeAgo,
   time,
   author,
@@ -84,28 +86,17 @@ const {
         </span>
       </div>
 
-      <!-- Botón play centrado -->
-      <div class="absolute inset-0 flex items-center justify-center">
-        <button
-          aria-label="Reproducir informe audiovisual"
-          class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-primary/80 hover:bg-secondary text-on-primary flex items-center justify-center transition-all transform hover:scale-110 shadow-lg border border-white/30 backdrop-blur-sm"
-          type="button"
-        >
-          <span class="material-symbols-outlined text-3xl sm:text-4xl pl-0.5">play_arrow</span>
-        </button>
-      </div>
-
       <!-- Crédito fotográfico -->
-      <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent p-3 pt-6 flex justify-between items-end text-xs text-primary-fixed font-label-caption">
-        <span>Vista aérea: Terminal Punta Colorada y boyas de amarre proyectadas</span>
-        <span>Foto: Corresponsalía Faro</span>
-      </div>
+     <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent p-3 pt-6 flex justify-between items-end text-xs text-primary-fixed font-sans">
+      <span>{imageAlt}</span>
+      <span>Foto: {credit}</span>
     </div>
+  </div>
 
     <!-- Cuerpo editorial -->
     <div class="p-5 sm:p-6 lg:p-7 flex flex-col flex-grow">
-      <!-- Supertítulo -->
-      <div class="flex items-center gap-2 mb-2 font-label-caption text-label-caption text-outline">
+       <!-- Supertítulo -->
+      <div class="flex items-center gap-2 mb-2 font-sans text-xs text-outline">
         {tag && <span class="font-bold text-[#D97706] tracking-wide uppercase">{tag}</span>}
         {tag && <span>•</span>}
         <span class="uppercase">{section}</span>
@@ -121,24 +112,24 @@ const {
       </div>
 
       <!-- Titular principal -->
-      <h1 class="font-headline-lg text-headline-lg text-primary leading-tight tracking-tight uppercase hover:text-secondary transition-colors cursor-pointer mb-3">
+      <h1 class="font-sans text-xl font-bold text-primary leading-tight hover:text-secondary transition-colors cursor-pointer mb-4">
         <a href={href}>{headline}</a>
       </h1>
 
       <!-- Bajada -->
       {subheadline && (
-        <p class="font-body-lead text-body-lead text-on-surface-variant font-normal leading-relaxed mb-4">
+        <p class="font-sans text-gray-600 font-normal text-lg leading-relaxed mb-4">
           {subheadline}
         </p>
       )}
 
       <!-- Byline -->
-      <div class="flex flex-wrap items-center justify-between gap-y-2 py-3 border-y border-outline-variant text-xs text-on-surface-variant font-label-caption mb-5">
+      <div class="flex flex-wrap items-center justify-between gap-y-2 py-3 border-y border-outline-variant text-xs text-on-surface-variant font-sans mb-5">
         <div class="flex items-center gap-2">
           <span class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-fixed font-bold flex items-center justify-center text-[10px]">
             FE
           </span>
-          {author && <span class="text-primary font-semibold">{author}</span>}
+          {author && <span class="font-sans text-primary font-semibold">{author}</span>}
         </div>
         {timeAgo && (
           <div class="flex items-center gap-1 text-outline">
@@ -157,8 +148,8 @@ const {
                 <span class="material-symbols-outlined text-base">{kpi.icon}</span>
               </div>
               <div>
-                <span class="block font-label-caption text-[11px] text-outline uppercase tracking-wider">{kpi.label}</span>
-                <span class="font-headline-sm text-headline-sm text-primary font-bold">{kpi.value}</span>
+                <span class="block font-sans text-[11px] text-outline font-semibold uppercase tracking-wider">{kpi.label}</span>
+                <span class="font-sans font-bold text-sm text-primary">{kpi.value}</span>
               </div>
             </div>
           ))}
@@ -167,7 +158,7 @@ const {
 
       <!-- Extracto -->
       {excerpt && (
-        <p class="font-body-md text-body-md text-on-surface leading-normal text-justify">
+        <p class="font-sans text-gray-600 font-normal text-base text-on-surface leading-normal text-justify mb-4">
           {excerpt}
         </p>
       )}
@@ -176,7 +167,7 @@ const {
       <div class="mt-4 pt-3 flex items-center justify-between">
         <a
           href={href}
-          class="inline-flex items-center gap-1.5 text-secondary hover:text-primary font-label-ticker text-sm font-bold transition-colors"
+          class="inline-flex items-center gap-1.5 text-secondary hover:text-primary font-sans text-sm font-bold transition-colors"
         >
           <span>Continuar leyendo el reportaje integral</span>
           <span class="material-symbols-outlined text-sm">trending_flat</span>
@@ -211,26 +202,26 @@ const {
       </div>
     )}
 
-    <!-- Meta: orden + tiempo + sección -->
+     <!-- Meta: orden + tiempo + sección -->
     <div class="flex items-center gap-2 mb-1.5">
       {order && (
-        <span class="font-headline-sm text-secondary font-bold text-lg leading-none">
+        <span class="font-sans font-bold text-secondary text-lg leading-none">
           {String(order).padStart(2, '0')}
         </span>
       )}
       {timeAgo && (
-        <span class="font-label-caption text-label-caption text-outline">{timeAgo}</span>
+        <span class="font-sans text-xs text-outline">{timeAgo}</span>
       )}
       <span class="text-outline">•</span>
-      <span class="font-label-ticker text-xs text-primary-container font-semibold uppercase">{section}</span>
+      <span class="font-sans text-xs font-semibold text-primary-container uppercase">{section}</span>
     </div>
 
-    <h3 class="font-title-editorial text-title-editorial text-primary group-hover:text-secondary transition-colors">
+    <h3 class="font-sans text-xl font-bold text-primary group-hover:text-secondary transition-colors mb-3">
       <a href={href}>{headline}</a>
     </h3>
 
     {excerpt && (
-      <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">{excerpt}</p>
+      <p class="font-sans text-gray-600 font-normal text-sm text-on-surface-variant mt-1 mb-3 line-clamp-2">{excerpt}</p>
     )}
   </article>
 )}
@@ -238,20 +229,20 @@ const {
 {variant === 'wire' && (
   <article class="py-3 group cursor-pointer">
     <!-- Hora + categoría -->
-    <div class="flex items-center gap-2 text-label-caption font-label-caption text-outline mb-1">
+    <div class="flex items-center gap-2 font-sans text-xs text-outline mb-1">
       {time && <span class="text-error font-bold">{time}</span>}
       <span>•</span>
-      <span class={`font-label-ticker text-[11px] font-semibold ${isBreaking ? 'text-error' : 'text-primary'}`}>
+      <span class={`font-sans text-[11px] font-semibold ${isBreaking ? 'text-error' : 'text-primary'}`}>
         {section}
       </span>
     </div>
 
-    <h3 class="font-title-editorial text-title-editorial text-primary group-hover:text-secondary transition-colors leading-snug">
+    <h3 class="font-sans text-xl font-bold text-primary group-hover:text-secondary transition-colors leading-snug mb-3">
       <a href={href}>{headline}</a>
     </h3>
 
     {excerpt && (
-      <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 line-clamp-2">{excerpt}</p>
+      <p class="font-sans text-gray-600 font-normal text-sm text-on-surface-variant mt-1 mb-3 line-clamp-2">{excerpt}</p>
     )}
   </article>
 )}

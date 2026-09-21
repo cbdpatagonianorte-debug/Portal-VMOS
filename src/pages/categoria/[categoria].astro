@@ -84,7 +84,7 @@ function formatTimeAgo(date: Date) {
   </style>
 </head>
 
-<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<body class="bg-background text-on-surface font-sans antialiased min-h-screen flex flex-col">
 
   <Header activeSection={currentSlug} />
 
@@ -92,10 +92,10 @@ function formatTimeAgo(date: Date) {
     
     <!-- Encabezado de la página de categoría -->
     <div class="mb-10 border-b-4 border-primary pb-4 inline-block pr-8">
-      <span class="text-secondary font-label-ticker text-sm font-bold tracking-wider uppercase block mb-1">
+      <span class="text-secondary font-sans text-sm font-bold tracking-wider uppercase block mb-1">
         SECCIÓN
       </span>
-      <h1 class="font-headline-lg text-4xl lg:text-5xl uppercase tracking-tight text-primary">
+      <h1 class="font-sans font-bold text-4xl lg:text-5xl uppercase tracking-tight text-primary">
         {categoryName}
       </h1>
     </div>
@@ -125,14 +125,14 @@ function formatTimeAgo(date: Date) {
     ) : (
       <div class="py-12 text-center text-on-surface-variant bg-surface-container-low rounded border border-outline-variant/60">
         <span class="material-symbols-outlined text-4xl mb-2 text-outline">article</span>
-        <p class="font-body-lg text-lg">No hay artículos publicados en esta sección aún.</p>
+          <p class="font-sans text-lg">No hay artículos publicados en esta sección aún.</p>
       </div>
     )}
 
   </main>
 
   <footer class="w-full py-8 px-6 border-t-2 border-secondary bg-primary text-on-primary mt-auto">
-    <div class="max-w-[1440px] mx-auto text-center font-label-caption text-xs text-primary-fixed-dim">
+    <div class="max-w-[1440px] mx-auto text-center font-sans text-xs text-primary-fixed-dim">
       <p>© 2025 Faro Energético / Noticias VMOS. Todos los derechos reservados.</p>
     </div>
   </footer>

@@ -8,12 +8,12 @@
   }
   
   body {
-    @apply text-dark antialiased;
+    @apply text-on-surface antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-bold tracking-tight;
+    @apply font-sans font-bold tracking-tight;
   }
 
   h1 {
@@ -31,7 +31,7 @@
 
 @layer components {
   .prose {
-    @apply text-muted leading-relaxed;
+    @apply text-on-surface-variant leading-relaxed font-sans;
   }
   
   .prose p {
@@ -39,11 +39,11 @@
   }
   
   .prose a {
-    @apply text-accent underline hover:no-underline transition-all;
+    @apply text-secondary underline hover:no-underline transition-all;
   }
   
   .prose blockquote {
-    @apply border-l-4 border-accent pl-6 my-6 italic text-muted;
+    @apply border-l-4 border-secondary pl-6 my-6 italic text-on-surface-variant;
   }
   
   .prose ul, .prose ol {
