@@ -106,14 +106,15 @@ function formatTimeAgo(date: Date) {
         {categoryNews.map((noticia, index) => (
           <div class="flex flex-col border border-outline-variant/50 rounded overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-surface-container-lowest">
             <NewsCard
-              variant={index === 0 && noticia.data.coverImage ? 'hero' : 'trend'} // Hacemos la primera más grande si tiene imagen
+              variant="list"
               section={noticia.data.section || noticia.data.category}
               tag={noticia.data.tag}
               headline={noticia.data.title}
               subheadline={noticia.data.description}
               excerpt={noticia.data.description}
-              imageUrl={noticia.data.coverImage?.url}
-              imageAlt={noticia.data.coverImage?.alt}
+              imageUrl={noticia.data.coverImage?.url || noticia.data.image}
+              imageAlt={noticia.data.coverImage?.alt || noticia.data.title}
+              credit={noticia.data.coverImage?.credit}
               author={noticia.data.author}
               timeAgo={formatTimeAgo(noticia.data.publishedAt)}
               readingMinutes={noticia.data.readingMinutes}

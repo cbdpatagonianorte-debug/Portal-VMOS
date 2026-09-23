@@ -8,7 +8,7 @@ author: "Corresponsalía Patagonia Atlántica — Faro Energético"
 section: "PLAYAS DORADAS"
 readingMinutes: 3
 coverImage:
-  url: "https://lh3.googleusercontent.com/aida-public/AB6AXuDmJFye4wFsjmqe3XNfnOrEepu3xTtbeN-mmPD70OSbqZD2FMTDcegEepASrOO6P9ktrtG9oEvyvBOeB6odPR96b1ME5sFmg1gD7_LaTaRn0BDgIcJNV05BRI6GuhN6iHQh4ABV9LXxkwEQTPHXRiwEf7pRm82n4TOwerOr4iROSPSMocFwS-NzSd6t5sxLdhl55qQ_ft-BapQGn_SRHUn1d8Yi_Ygkt-2sal2YhbXkMW9LQWZYJz20ng"
+  url: "/gallery/Playas_Doradas.webp"
   alt: "Costa de Playas Doradas con acantilados dorados, olas turquesa y faro en el horizonte"
   credit: "Foto: Archivo Faro Energético"
 cardVariant: "trend"

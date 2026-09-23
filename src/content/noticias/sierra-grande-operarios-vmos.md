@@ -8,8 +8,8 @@ author: "Corresponsalía Sierra Grande — Faro Energético"
 section: "SIERRA GRANDE"
 readingMinutes: 4
 coverImage:
-  url: "https://lh3.googleusercontent.com/aida-public/AB6AXuD7XvKe4vlpuNvJCakdJ3aZAlo6AAXuKkWc3-M5hep_omIZmS9orLo-hE2DJ7zPqQUW-cOJweYWfq8mo1AE0d5HfSrhSK_zwLT2wp0_omEuTvB_4_7d-QYrdVVIWshJ3i1l5lrhSpgnusDM2fGzzV54kwgOgfPdiKARI3x0vVndTYDeeFnRyMj16gl27_0bL_4gckhSYcKJCjhcqgjyZnBfMOiFH5-htFn7uM8or56Oqm2bNoCPOP5J_A"
-  alt: "Maquinaria pesada de construcción trabajando en la estepa patagónica bajo luz diurna intensa"
+  url: "/gallery/Sierra_Grande.webp"
+  alt: "Obra industrial de VMOS en Sierra Grande con maquinaria pesada sobre la estepa patagónica"
   credit: "Foto: Corresponsalía Faro Energético"
 cardVariant: "trend"
 isBreaking: false

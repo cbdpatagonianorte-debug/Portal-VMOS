@@ -8,7 +8,7 @@
  */
 
 export interface Props {
-  variant?: 'hero' | 'trend' | 'wire';
+  variant?: 'hero' | 'trend' | 'wire' | 'list';
   /** Número ordinal visible (solo en variant="trend") */
   order?: number;
   /** Badge de sección: 'SIERRA GRANDE' | 'PLAYAS DORADAS' | 'LOGÍSTICA' | etc. */
@@ -195,10 +195,6 @@ const {
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           loading="lazy"
         />
-        <!-- Overlay play -->
-        <div class="absolute top-2 left-2 w-8 h-8 bg-primary/80 backdrop-blur-sm text-on-primary rounded flex items-center justify-center shadow">
-          <span class="material-symbols-outlined text-sm">play_arrow</span>
-        </div>
       </div>
     )}
 
@@ -223,6 +219,53 @@ const {
     {excerpt && (
       <p class="font-sans text-gray-600 font-normal text-sm text-on-surface-variant mt-1 mb-3 line-clamp-2">{excerpt}</p>
     )}
+  </article>
+  )}
+
+{variant === 'list' && (
+  <article class="flex flex-col border border-outline-variant/50 rounded overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-surface-container-lowest">
+    {imageUrl && (
+      <div class="relative overflow-hidden rounded-t aspect-[16/9] bg-surface-container">
+        <img
+          src={imageUrl}
+          alt={imageAlt}
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          loading="lazy"
+        />
+      </div>
+    )}
+
+    <div class="p-4 flex flex-col flex-grow">
+      <div class="flex items-center gap-2 mb-2 font-sans text-xs text-outline">
+        <span class="font-semibold text-primary-container uppercase">{section}</span>
+        {timeAgo && (
+          <>
+            <span>•</span>
+            <span>{timeAgo}</span>
+          </>
+        )}
+      </div>
+
+      <h3 class="font-sans text-lg font-bold text-primary group-hover:text-secondary transition-colors mb-2 leading-tight">
+        <a href={href}>{headline}</a>
+      </h3>
+
+      {excerpt && (
+        <p class="font-sans text-sm text-on-surface-variant mb-3 line-clamp-3">{excerpt}</p>
+      )}
+
+      <div class="mt-auto pt-3 border-t border-outline-variant/60 flex items-center justify-between text-xs text-on-surface-variant font-sans">
+        <div class="flex items-center gap-2">
+          {author && <span class="font-sans text-primary font-semibold">{author}</span>}
+        </div>
+        {readingMinutes && (
+          <span class="flex items-center gap-1 text-outline">
+            <span class="material-symbols-outlined text-xs">timer</span>
+            {readingMinutes} min de lectura
+          </span>
+        )}
+      </div>
+    </div>
   </article>
 )}
 

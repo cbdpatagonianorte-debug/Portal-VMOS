@@ -141,9 +141,9 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"noticias": {
-"ejemplo-primera-noticia.md": {
-	id: "ejemplo-primera-noticia.md";
-  slug: "ejemplo-primera-noticia";
+"el-vmos-entra-en-su-recta-final.md": {
+	id: "el-vmos-entra-en-su-recta-final.md";
+  slug: "el-vmos-entra-en-su-recta-final";
   body: string;
   collection: "noticias";
   data: InferEntrySchema<"noticias">
@@ -165,6 +165,20 @@ declare module 'astro:content' {
 "sierra-grande-operarios-vmos.md": {
 	id: "sierra-grande-operarios-vmos.md";
   slug: "sierra-grande-operarios-vmos";
+  body: string;
+  collection: "noticias";
+  data: InferEntrySchema<"noticias">
+} & { render(): Render[".md"] };
+"terminal-portuaria-vmos-punta-colorada.md": {
+	id: "terminal-portuaria-vmos-punta-colorada.md";
+  slug: "terminal-portuaria-vmos-punta-colorada";
+  body: string;
+  collection: "noticias";
+  data: InferEntrySchema<"noticias">
+} & { render(): Render[".md"] };
+"vmos-movio-15902-millones-primer-trimestre.md": {
+	id: "vmos-movio-15902-millones-primer-trimestre.md";
+  slug: "vmos-movio-15902-millones-primer-trimestre";
   body: string;
   collection: "noticias";
   data: InferEntrySchema<"noticias">

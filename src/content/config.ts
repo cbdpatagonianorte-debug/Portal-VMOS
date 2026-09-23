@@ -64,12 +64,18 @@ const noticiasCollection = defineCollection({
       alt: z.string(),
       credit: z.string().optional(),
     }).optional(),
+    /** Imagen simple (string URL) — compatible con frontmatter plano */
+    image: z.string().url().or(z.string().regex(/^\/.*/)).optional(),
 
     // Opciones de presentación en portada
     /** Variante de NewsCard recomendada para mostrar en portada */
     cardVariant: z.enum(VARIANTE_CARD).default('trend'),
     /** Marca la noticia como "último momento" (activa live-pulse en badge) */
     isBreaking: z.boolean().default(false),
+    /** Indica que la nota tiene informe/PDF asociado y habilita la descarga */
+    isReport: z.boolean().default(false),
+    /** URL del PDF asociado (opcional) */
+    pdfUrl: z.string().url().or(z.string().regex(/^\/.*/)).optional(),
     /** Orden numérico dentro de la sección "En Foco" (1–5) */
     featuredOrder: z.number().int().min(1).max(5).optional(),
 
