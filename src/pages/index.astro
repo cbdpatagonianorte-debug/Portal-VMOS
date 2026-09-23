@@ -39,7 +39,6 @@ function formatTimeAgo(date: Date) {
   return date.toLocaleDateString('es-AR');
 }
 ---
-
 <!DOCTYPE html>
 <html lang="es" class="light">
 <head>
@@ -47,7 +46,6 @@ function formatTimeAgo(date: Date) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Faro Energético / Noticias VMOS — Periodismo de Infraestructura y Golfo San Matías</title>
   <meta name="description" content="Cobertura periodística de alta fidelidad técnica sobre la infraestructura de hidrocarburos, Punta Colorada, Sierra Grande y la transformación costera de Río Negro." />
-
   <!-- Google Fonts: Oswald + Source Sans 3 -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,27 +58,10 @@ function formatTimeAgo(date: Date) {
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
     rel="stylesheet"
   />
-
-  <style>
-    /* Material Symbols baseline */
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      display: inline-block;
-      vertical-align: middle;
-      line-height: 1;
-    }
-    /* Animación live pulse */
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.4; transform: scale(1.15); }
-    }
-    .live-pulse {
-      animation: pulse-dot 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
-  </style>
+  <!-- Client-side app -->
+  <script type="module" src="/scripts/app.js"></script>
 </head>
-
-  <body class="bg-background text-on-surface font-sans antialiased min-h-screen flex flex-col selection:bg-secondary-container selection:text-primary">
+<body class="bg-background text-on-surface font-sans antialiased min-h-screen flex flex-col selection:bg-secondary-container selection:text-primary">
 
   <!-- Cabecera (barra utilitaria + banner + navbar) -->
   <Header activeSection="punta-colorada" />
@@ -131,10 +112,10 @@ function formatTimeAgo(date: Date) {
           <p class="font-sans text-sm text-on-surface font-semibold leading-snug">
             Reciba el reporte semanal con el avance de soldadura de tuberías y cronogramas de dragado en Punta Colorada.
           </p>
-          <a href="#newsletter" class="inline-flex items-center gap-1 mt-2 text-xs font-label-ticker font-bold text-primary hover:text-secondary">
+          <button onclick="window.openNewsletterModal()" class="inline-flex items-center gap-1 mt-2 text-xs font-label-ticker font-bold text-primary hover:text-secondary transition-colors">
             Inscribirse ahora
             <span class="material-symbols-outlined text-xs">arrow_forward</span>
-          </a>
+          </button>
         </div>
       </section>
 
@@ -268,11 +249,11 @@ function formatTimeAgo(date: Date) {
           <h2 class="font-sans font-bold text-2xl uppercase tracking-tight text-primary">
             Ecosistema Costero & Minero
           </h2>
-          <p class="font-sans text-sm text-gray-600 font-normal">
+          <p class="font-sans text-sm text-on-surface-variant font-normal">
             Datos operacionales, mareas astronómicas y flujo vehicular entre el puerto y la Ruta 3.
           </p>
         </div>
-        <a href="#estadisticas" class="hidden sm:inline-flex items-center gap-1 text-secondary font-label-ticker text-xs font-bold hover:underline">
+        <a href="/noticias" class="hidden sm:inline-flex items-center gap-1 text-secondary font-label-ticker text-xs font-bold hover:underline">
           Ver panel de control regional
           <span class="material-symbols-outlined text-sm">arrow_forward</span>
         </a>
@@ -289,7 +270,7 @@ function formatTimeAgo(date: Date) {
             <span class="font-sans font-bold text-primary text-xl">8.4 m</span>
             <span class="text-xs text-on-surface-variant font-label-caption">Amplitud máxima hoy</span>
           </div>
-          <p class="font-sans text-xs text-outline mt-1">
+          <p class="font-sans text-xs text-on-surface-variant mt-1">
             Condiciones náuticas óptimas para buques de soporte y batimetría preliminar.
           </p>
         </div>
@@ -304,7 +285,7 @@ function formatTimeAgo(date: Date) {
             <span class="font-sans font-bold text-primary text-xl">34 km/h</span>
             <span class="text-xs text-secondary-container font-label-caption font-bold">Ráfagas a 55 km/h</span>
           </div>
-          <p class="font-sans text-xs text-outline mt-1">
+          <p class="font-sans text-xs text-on-surface-variant mt-1">
             Operaciones de soldadura en trinchera con protección de biombos cortaviento.
           </p>
         </div>
@@ -319,7 +300,7 @@ function formatTimeAgo(date: Date) {
             <span class="font-sans font-bold text-primary text-xl">480</span>
             <span class="text-xs text-emerald-600 font-label-caption font-semibold">+120 esta semana</span>
           </div>
-          <p class="font-sans text-xs text-outline mt-1">
+          <p class="font-sans text-xs text-on-surface-variant mt-1">
             Ingenieros civiles, operarios viales y cuadrillas de tendido de fibra óptica.
           </p>
         </div>
@@ -339,7 +320,7 @@ function formatTimeAgo(date: Date) {
           <div class="font-sans text-xl font-bold uppercase tracking-wider text-on-primary mb-2">
             FARO ENERGÉTICO / NOTICIAS VMOS
           </div>
-          <p class="font-sans text-sm text-gray-600 font-normal max-w-2xl">
+          <p class="font-sans text-sm text-on-primary/80 font-normal max-w-2xl">
             Cobertura periodística de alta fidelidad técnica sobre la infraestructura de hidrocarburos, desarrollo de Punta Colorada, el pulso social de Sierra Grande y la transformación costera de Río Negro.
           </p>
         </div>
@@ -350,23 +331,25 @@ function formatTimeAgo(date: Date) {
             class="w-full sm:w-72 bg-surface-container-lowest text-primary text-sm px-3.5 py-2.5 rounded border border-outline-variant focus:outline-none focus:ring-2 focus:ring-secondary"
           />
           <button
+            data-newsletter-subscribe
             class="w-full sm:w-auto px-5 py-2.5 bg-secondary hover:bg-secondary-container text-on-secondary hover:text-on-secondary-fixed font-label-ticker text-sm font-bold uppercase tracking-wider rounded transition-colors whitespace-nowrap shadow"
             type="button"
           >
             Suscribirse al Boletín
           </button>
+          <div data-newsletter-status></div>
         </div>
       </div>
 
       <!-- Links de navegación de footer -->
       <div class="flex flex-wrap items-center justify-start gap-x-8 gap-y-3 font-label-ticker text-sm">
-        <a href="#punta-colorada"    class="text-secondary-fixed underline font-medium hover:text-secondary-fixed transition-colors">Terminal Punta Colorada</a>
-        <a href="#oleoducto"         class="text-primary-fixed-dim hover:text-on-primary transition-colors">Monitoreo de Oleoducto</a>
-        <a href="#impacto-ambiental" class="text-primary-fixed-dim hover:text-on-primary transition-colors">Informes de Impacto Ambiental</a>
-        <a href="#sierra-grande"     class="text-primary-fixed-dim hover:text-on-primary transition-colors">Comunidad Sierra Grande</a>
-        <a href="#playas-doradas"    class="text-primary-fixed-dim hover:text-on-primary transition-colors">Mareas Playas Doradas</a>
-        <a href="#privacidad"        class="text-primary-fixed-dim hover:text-on-primary transition-colors">Términos y Privacidad</a>
-        <a href="#contacto"          class="text-primary-fixed-dim hover:text-on-primary transition-colors">Contacto Editorial</a>
+        <a href="/categoria/punta-colorada-y-vmos" class="text-secondary-fixed underline font-medium hover:text-secondary-fixed transition-colors">Terminal Punta Colorada</a>
+        <a href="/noticias" class="text-primary-fixed-dim hover:text-on-primary transition-colors">Monitoreo de Oleoducto</a>
+        <a href="/noticias" class="text-primary-fixed-dim hover:text-on-primary transition-colors">Informes de Impacto Ambiental</a>
+        <a href="/categoria/sierra-grande" class="text-primary-fixed-dim hover:text-on-primary transition-colors">Comunidad Sierra Grande</a>
+        <a href="/categoria/playas-doradas" class="text-primary-fixed-dim hover:text-on-primary transition-colors">Mareas Playas Doradas</a>
+        <a href="/noticias" class="text-primary-fixed-dim hover:text-on-primary transition-colors">Términos y Privacidad</a>
+        <a href="/noticias" class="text-primary-fixed-dim hover:text-on-primary transition-colors">Contacto Editorial</a>
       </div>
 
       <!-- Copyright y datos legales -->

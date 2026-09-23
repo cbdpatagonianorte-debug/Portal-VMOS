@@ -6,7 +6,7 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,8 +24,10 @@ const { title, description } = Astro.props;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="/favicon.ico" />
+  <!-- Client-side app -->
+  <script type="module" src="/scripts/app.js"></script>
 </head>
-<body class="bg-light text-dark font-sans antialiased">
+<body class="bg-background text-on-surface font-sans antialiased">
   <main class="min-h-screen">
     <slot />
   </main>

@@ -1,25 +1,17 @@
-# AGENTS.md - Portal Informativo VMOS & Sierra Grande
+# Portal de Noticias VMOS & Sierra Grande
 
-## Setup Commands
+## Comandos Principales
 - Instalar dependencias: `npm install`
-- Servidor de desarrollo: `npm run dev`
-- Compilar proyecto: `npm run build`
+- Servidor dev: `npm run dev`
+- Verificación rápida (Sensor): `scripts/checks/fast.sh`
 
-## Stack de Desarrollo Actual del Front-End
-- **Framework:** Astro v4
-- **Estilos:** Tailwind CSS (con tokens semánticos de Stitch configurados en `tailwind.config.js`)
-- **Página Principal:** `src/pages/index.astro`
-- **Componentes Creados:**
-  - `src/components/Header.astro` (Maneja barra utilitaria, ticker de Brent Oil, menú institucional y navegación)
-  - `src/components/NewsCard.astro` (Componente modular para las tarjetas de noticias)
+## Trampas Conocidas & Reglas
+- No publicar directamente a la base de datos sin pasar por la validación del JSON Schema.
+- El servidor backend escucha en el puerto 3000. No alterar los headers de CORS.
+- Toda nota de Sierra Grande o Playas Doradas debe incluir la etiqueta de ámbito (`Municipal` o `Provincial`).
 
-## Code Style & Standards
-- TypeScript estricto / React / Tailwind CSS
-- Estructura de Noticias: Titular, Bajada, Cuerpos de Texto, Alcance Geográfico y Fuentes
-
-## Testing Instructions
-- Ejecutar pruebas: `npm test`
-- Validar linters: `npm run lint`
-
-## Skills Disponibles
-Para taxonomía energética y formatos de noticias, consultar `.opencode/skills/` o `.agents/skills/`.
+## Punteros de Conocimiento
+- Arquitectura web: docs/ARCHITECTURE.md
+- Guía de redacción y tono: docs/editorial-principles.md
+- Registro de errores corregidos: docs/harness-log.md
+- Definición de agentes del equipo: .agents/agents/

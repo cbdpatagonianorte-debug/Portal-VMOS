@@ -29,49 +29,53 @@ metaDescription: "Sierra Grande activa planes de alojamiento y servicios para m�
 
 El municipio de Sierra Grande, a través de su Secretaría de Planeamiento Urbano, se encuentra en plena articulación con representantes del Sindicato de Obreros de la Construcción (UOCRA), inversores privados y el gobierno provincial para garantizar la infraestructura necesaria que soporte el arribo masivo de trabajadores vinculados al proyecto del Oleoducto Vaca Muerta Sur (VMOS).
 
-## El Plan de Contingencia Habitacional
+<p class="font-bold text-gray-900 text-lg mt-8 mb-3">El Plan de Contingencia Habitacional</p>
 
-La Secretaría de Planeamiento Urbano municipal confirmó el reacondicionamiento de **cuatro complejos habitacionales** construidos durante la década del '70 para los trabajadores de la mina de hierro HIPASAM, que permanecían deshabitados desde el cierre de la actividad minera en 1991. Las obras de puesta en valor incluyen:
+<p class="text-gray-700 leading-relaxed mb-4">La Secretaría de Planeamiento Urbano municipal confirmó el reacondicionamiento de <strong>cuatro complejos habitacionales</strong> construidos durante la década del '70 para los trabajadores de la mina de hierro HIPASAM, que permanecían deshabitados desde el cierre de la actividad minera en 1991. Las obras de puesta en valor incluyen:</p>
 
-- Reparación de instalaciones eléctricas y sanitarias
-- Construcción de nuevas cocinas comunitarias certificadas
-- Habilitación de servicios de conectividad de banda ancha
-- Instalación de generadores de respaldo para operación continua
+<ul class="list-disc pl-5 space-y-2 my-4 text-gray-700 leading-relaxed">
+  <li>Reparación de instalaciones eléctricas y sanitarias</li>
+  <li>Construcción de nuevas cocinas comunitarias certificadas</li>
+  <li>Habilitación de servicios de conectividad de banda ancha</li>
+  <li>Instalación de generadores de respaldo para operación continua</li>
+</ul>
 
-Adicionalmente, el sector privado anunció la construcción de **tres nuevos complejos de alojamiento temporal** bajo el esquema de concesión a 5 años, con capacidad total para 850 trabajadores bajo el modelo de campamento semi-permanente con servicios completos.
+<p class="text-gray-700 leading-relaxed mb-4">Adicionalmente, el sector privado anunció la construcción de <strong>tres nuevos complejos de alojamiento temporal</strong> bajo el esquema de concesión a 5 años, con capacidad total para 850 trabajadores bajo el modelo de campamento semi-permanente con servicios completos.</p>
 
-## Cupo Local y Acuerdos Sindicales
+<p class="font-bold text-gray-900 text-lg mt-8 mb-3">Cupo Local y Acuerdos Sindicales</p>
 
-El acuerdo entre la Municipalidad y la UOCRA Seccional Río Negro establece que el **40% de la mano de obra** en todas las etapas de la obra dentro del ejido municipal debe ser provisto por residentes locales certificados. Esta cláusula cubre desde operarios de movimiento de suelo hasta soldadores calificados, pasando por conductores de maquinaria pesada y técnicos en mantenimiento de equipos.
+<p class="text-gray-700 leading-relaxed mb-4">El acuerdo entre la Municipalidad y la UOCRA Seccional Río Negro establece que el <strong>40% de la mano de obra</strong> en todas las etapas de la obra dentro del ejido municipal debe ser provisto por residentes locales certificados. Esta cláusula cubre desde operarios de movimiento de suelo hasta soldadores calificados, pasando por conductores de maquinaria pesada y técnicos en mantenimiento de equipos.</p>
 
-> "Sierra Grande tuvo que reinventarse varias veces a lo largo de su historia. Esta vez, la oportunidad es histórica y estamos preparados para aprovecharla con nuestra gente trabajando."
-> — Marcelo Curín, Intendente de Sierra Grande
+<blockquote class="border-l-4 border-slate-900 bg-slate-50 p-4 italic text-slate-800 my-6">
+  "Sierra Grande tuvo que reinventarse varias veces a lo largo de su historia. Esta vez, la oportunidad es histórica y estamos preparados para aprovecharla con nuestra gente trabajando."
+  <br><cite class="text-xs text-slate-500">— Marcelo Curín, Intendente de Sierra Grande</cite>
+</blockquote>
 
-### Capacitación Pre-Empleo
+<p class="font-bold text-gray-900 text-lg mt-8 mb-3">Capacitación Pre-Empleo</p>
 
 El Centro de Formación Profesional N°18 de Sierra Grande, dependiente del Ministerio de Educación de Río Negro, acaba de abrir la inscripción para cuatro cursos de capacitación intensiva con **certificación reconocida por el Instituto Argentino del Petróleo y del Gas (IAPG)**:
 
-1. **Soldadura de Alta Presión** (240 horas) — Inicio: 15 de noviembre
-2. **Operación de Maquinaria Pesada** (180 horas) — Inicio: 18 de noviembre
-3. **Técnico en Mantenimiento de Ductos** (200 horas) — Inicio: 20 de noviembre
-4. **Seguridad e Higiene en Obras de Infraestructura Energética** (120 horas) — Inicio: 22 de noviembre
+<ol class="list-decimal pl-5 space-y-2 my-4 text-gray-700 leading-relaxed">
+  <li><strong>Soldadura de Alta Presión</strong> (240 horas) — Inicio: 15 de noviembre</li>
+  <li><strong>Operación de Maquinaria Pesada</strong> (180 horas) — Inicio: 18 de noviembre</li>
+  <li><strong>Técnico en Mantenimiento de Ductos</strong> (200 horas) — Inicio: 20 de noviembre</li>
+  <li><strong>Seguridad e Higiene en Obras de Infraestructura Energética</strong> (120 horas) — Inicio: 22 de noviembre</li>
+</ol>
 
-Las inscripciones se reciben en la sede del CFP N°18 (Av. Almirante Brown 580, Sierra Grande) y de forma online a través del portal del Ministerio de Educación provincial.
+<p class="text-gray-700 leading-relaxed mb-6">Las inscripciones se reciben en la sede del CFP N°18 (Av. Almirante Brown 580, Sierra Grande) y de forma online a través del portal del Ministerio de Educación provincial.</p>
 
-## Impacto en el Comercio Local
+### Impacto en el Comercio Local
 
-La Cámara de Comercio de Sierra Grande estima que el ingreso de 1.200 trabajadores con salarios de convenio UOCRA —que promedian los $850.000 pesos mensuales en las categorías más requeridas— **inyectará aproximadamente $1.020 millones mensuales** en la economía local, beneficiando directamente a supermercados, panaderías, farmacias, servicios de salud y gastronomía.
+<p class="text-gray-700 leading-relaxed mb-4">La Cámara de Comercio de Sierra Grande estima que el ingreso de 1.200 trabajadores con salarios de convenio UOCRA —que promedian los $850.000 pesos mensuales en las categorías más requeridas— <strong>inyectará aproximadamente $1.020 millones mensuales</strong> en la economía local, beneficiando directamente a supermercados, panaderías, farmacias, servicios de salud y gastronomía.</p>
 
-El intendente Curín anunció la habilitación de una **feria de proveedores locales** que se realizará el 8 de noviembre, donde las empresas constructoras involucradas en el VMOS podrán conocer la oferta de bienes y servicios disponible en la región.
+<p class="text-gray-700 leading-relaxed mb-4">El intendente Curín anunció la habilitación de una <strong>feria de proveedores locales</strong> que se realizará el 8 de noviembre, donde las empresas constructoras involucradas en el VMOS podrán conocer la oferta de bienes y servicios disponible en la región.</p>
 
-## Servicios de Salud y Emergencias
+#### Servicios de Salud y Emergencias
 
-El Hospital Zonal de Sierra Grande ampliará su guardia de traumatología y medicina del trabajo a partir del 1° de diciembre, con la incorporación de dos médicos especialistas financiados mediante un convenio con el Ministerio de Salud de Río Negro y el consorcio VMOS. También se instalará un puesto sanitario fijo en el campamento principal, a cargo de una empresa de medicina laboral privada.
+<p class="text-gray-700 leading-relaxed mb-6">El Hospital Zonal de Sierra Grande ampliará su guardia de traumatología y medicina del trabajo a partir del 1° de diciembre, con la incorporación de dos médicos especialistas financiados mediante un convenio con el Ministerio de Salud de Río Negro y el consorcio VMOS. También se instalará un puesto sanitario fijo en el campamento principal, a cargo de una empresa de medicina laboral privada.</p>
 
 ---
 
-**Fuentes:**
-
-- Municipalidad de Sierra Grande — Comunicado oficial, octubre 2024
-- UOCRA Seccional Río Negro — Convenio de cupo laboral local
-- Cámara de Comercio de Sierra Grande — Informe de impacto económico proyectado
+<p class="text-xs text-gray-500 italic mt-2 mb-6">
+  Fuente: Municipalidad de Sierra Grande — Comunicado oficial, octubre 2024; UOCRA Seccional Río Negro — Convenio de cupo laboral local; Cámara de Comercio de Sierra Grande — Informe de impacto económico proyectado.
+</p>

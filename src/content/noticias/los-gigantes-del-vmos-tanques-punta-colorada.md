@@ -35,46 +35,44 @@ tags:
 metaDescription: "Los gigantes del VMOS: los tanques de Punta Colorada son un hito para la ingeniería argentina. 120.000 m³ cada uno, 550.000 bpd de exportación."
 ---
 
-## Los gigantes del VMOS: por qué los tanques de Punta Colorada representan un hito para la ingeniería argentina
+<p class="font-bold text-gray-900 text-lg mt-8 mb-3">Los gigantes del VMOS: por qué los tanques de Punta Colorada representan un hito para la ingeniería argentina</p>
 
-Cada uno de los seis tanques tendrá una capacidad de **120.000 metros cúbicos** y cumplirá un rol clave en las futuras exportaciones de Vaca Muerta. **Javier Bilotte**, gerente de Ingeniería y Construcción de VMOS, explicó a *Argenports* por qué su construcción fue el mayor desafío técnico de una obra que cambiará la logística petrolera argentina.
+<p class="text-gray-700 leading-relaxed mb-4">Cada uno de los seis tanques tendrá una capacidad de <strong>120.000 metros cúbicos</strong> y cumplirá un rol clave en las futuras exportaciones de Vaca Muerta. <strong>Javier Bilotte</strong>, gerente de Ingeniería y Construcción de VMOS, explicó a <em>Argenports</em> por qué su construcción fue el mayor desafío técnico de una obra que cambiará la logística petrolera argentina.</p>
 
-## Un oleoducto que cruza la Patagonia
+<p class="font-bold text-gray-900 text-lg mt-8 mb-3">Un oleoducto que cruza la Patagonia</p>
 
-Sobre la costa atlántica rionegrina, a pocos kilómetros de Sierra Grande, se levanta una de las estructuras más ambiciosas de la ingeniería argentina contemporánea. En la futura terminal portuaria de Punta Colorada, seis colosos de acero empiezan a definir el horizonte de una región que históricamente miró al mar sin imaginar que, algún día, sería la puerta de salida del petróleo de Vaca Muerta.
+<p class="text-gray-700 leading-relaxed mb-4">Sobre la costa atlántica rionegrina, a pocos kilómetros de Sierra Grande, se levanta una de las estructuras más ambiciosas de la ingeniería argentina contemporánea. En la futura terminal portuaria de Punta Colorada, seis colosos de acero empiezan a definir el horizonte de una región que históricamente miró al mar sin imaginar que, algún día, sería la puerta de salida del petróleo de Vaca Muerta.</p>
 
-Los números por sí solos alcanzarían para dimensionar la magnitud del proyecto. Cada uno de los seis tanques de almacenamiento tendrá una capacidad de **120.000 metros cúbicos** y un diámetro de **82 metros**, dimensiones que los convierten en piezas fundamentales de la cadena logística conocida como **Vaca Muerta Oil Sur (VMOS)**. Su función será acumular el crudo que llegará por el oleoducto antes de ser embarcado en buques de gran porte rumbo a los mercados internacionales.
+<p class="text-gray-700 leading-relaxed mb-4">Los números por sí solos alcanzarían para dimensionar la magnitud del proyecto. Cada uno de los seis tanques de almacenamiento tendrá una capacidad de <strong>120.000 metros cúbicos</strong> y un diámetro de <strong>82 metros</strong>, dimensiones que los convierten en piezas fundamentales de la cadena logística conocida como <strong>Vaca Muerta Oil Sur (VMOS)</strong>. Su función será acumular el crudo que llegará por el oleoducto antes de ser embarcado en buques de gran porte rumbo a los mercados internacionales.</p>
 
-El oleoducto VMOS conecta los yacimientos de la cuenca neuquina, partiendo de la zona de Allen, en el Alto Valle, hasta la costa de Río Negro, con una extensión de **437 kilómetros** y un diámetro de **30 pulgadas** en su primera fase.
+<p class="text-gray-700 leading-relaxed mb-4">El oleoducto VMOS conecta los yacimientos de la cuenca neuquina, partiendo de la zona de Allen, en el Alto Valle, hasta la costa de Río Negro, con una extensión de <strong>437 kilómetros</strong> y un diámetro de <strong>30 pulgadas</strong> en su primera fase.</p>
 
-La magnitud de la inversión acompaña la escala de la obra: se trata de una infraestructura con una inversión inicial en el orden de los **US$ 3.000 millones**, concebida para transportar hasta **550,000 barriles diarios** una vez alcanzada su plena operatividad. Su entrada en funcionamiento, prevista para principios de 2027, promete multiplicar la capacidad exportadora de la Argentina y consolidar a Vaca Muerta como un jugador de peso en el mercado global de hidrocarburos.
+<p class="text-gray-700 leading-relaxed mb-4">La magnitud de la inversión acompaña la escala de la obra: se trata de una infraestructura con una inversión inicial en el orden de los <strong>US$ 3.000 millones</strong>, concebida para transportar hasta <strong>550,000 barriles diarios</strong> una vez alcanzada su plena operatividad. Su entrada en funcionamiento, prevista para principios de 2027, promete multiplicar la capacidad exportadora de la Argentina y consolidar a Vaca Muerta como un jugador de peso en el mercado global de hidrocarburos.</p>
 
-## El desafío técnico detrás de cada tanque
+<p class="font-bold text-gray-900 text-lg mt-8 mb-3">El desafío técnico detrás de cada tanque</p>
 
-Para Javier Bilotte, gerente de Ingeniería y Construcción de VMOS, la construcción de estos tanques representa el mayor reto técnico de todo el proyecto. No se trata de estructuras convencionales: son recipientes de grandes dimensiones que deben cumplir con strictly estándares de seguridad, resistencia y estanqueidad en un entorno costero hostil, expuesto a vientos intensos y a la salinidad del mar.
+<p class="text-gray-700 leading-relaxed mb-4">Para Javier Bilotte, gerente de Ingeniería y Construcción de VMOS, la construcción de estos tanques representa el mayor reto técnico de todo el proyecto. No se trata de estructuras convencionales: son recipientes de grandes dimensiones que deben cumplir con <strong>estándares de seguridad, resistencia y estanqueidad</strong> en un entorno costero hostil, expuesto a vientos intensos y a la salinidad del mar.</p>
 
-Cada tanque demandó la llegada y el montaje cuidadoso de miles de placas de acero, un trabajo de precisión que requiere soldaduras certificadas y pruebas de hermeticidad rigurosas antes de su puesta en servicio. La logística de la obra resultó, en sí misma, un desafío: mover volúmenes tan grandes de material hasta una zona alejada de los grandes centros urbanos obligó a coordinar transporte terrestre, gestión de proveedores y planificación de montaje en un cronograma ajustado.
+<p class="text-gray-700 leading-relaxed mb-4">Cada tanque demandó la llegada y el montaje cuidadoso de miles de placas de acero, un trabajo de precisión que requiere soldaduras certificadas y pruebas de hermeticidad rigurosas antes de su puesta en servicio. La logística de la obra resultó, en sí misma, un desafío: mover volúmenes tan grandes de material hasta una zona alejada de los grandes centros urbanos obligó a coordinar transporte terrestre, gestión de proveedores y planificación de montaje en un cronograma ajustado.</p>
 
-## De Vaca Muerta al Atlántico
+<p class="font-bold text-gray-900 text-lg mt-8 mb-3">De Vaca Muerta al Atlántico</p>
 
-El significado de los tanques de Punta Colorada trasciende lo meramente constructivo. Su existencia materializa la posibilidad concreta de que el crudo no convencional de Vaca Muerta llegue de manera masiva y rentable al océano Atlántico, superando uno de los principales cuellos de botella que históricamente limitó al sector energético argentino: la falta de infraestructura para evacuar la producción creciente.
+<p class="text-gray-700 leading-relaxed mb-4">El significado de los tanques de Punta Colorada trasciende lo meramente constructivo. Su existencia materializa la posibilidad concreta de que el crudo no convencional de Vaca Muerta llegue de manera masiva y rentable al océano Atlántico, superando uno de los principales cuellos de botella que históricamente limitó al sector energético argentino: la falta de infraestructura para evacuar la producción creciente.</p>
 
-Según las proyecciones del sector, el VMOS permitirá transportar **550,000 barriles diarios**, lo que representa ingresos anuales por exportaciones superiores a los **US$ 15,000 millones**. Esta cifra explica el interés de los socios del consorcio y la relevancia geoestratégica de la obra, que ubica a Río Negro como un territorio protagónico del desarrollo energético nacional.
+<p class="text-gray-700 leading-relaxed mb-4">Según las proyecciones del sector, el VMOS permitirá transportar <strong>550,000 barriles diarios</strong>, lo que representa ingresos anuales por exportaciones superiores a los <strong>US$ 15,000 millones</strong>. Esta cifra explica el interés de los socios del consorcio y la relevancia geoestratégica de la obra, que ubica a Río Negro como un territorio protagónico del desarrollo energético nacional.</p>
 
-La obra ya superó el **77% de avance** y avanza a paso firme hacia su puesta en marcha. En el mar, frente a Punta Colorada, la instalación offshore de cadenas y anclas marcó un nuevo hito, habilitando la futura carga de crudo en buques de gran porte que completarán el recorrido logístico iniciado en los pozos neuquinos.
+<p class="text-gray-700 leading-relaxed mb-4">La obra ya superó el <strong>77% de avance</strong> y avanza a paso firme hacia su puesta en marcha. En el mar, frente a Punta Colorada, la instalación offshore de cadenas y anclas marcó un nuevo hito, habilitando la futura carga de crudo en buques de gran porte que completarán el recorrido logístico iniciado en los pozos neuquinos.</p>
 
-## Un cambio de paradigma logístico
+<p class="font-bold text-gray-900 text-lg mt-8 mb-3">Un cambio de paradigma logístico</p>
 
-Los seis gigantes de Punta Colorada son algo más que depósitos de crudo. Son el eslabón final de una cadena que promete transformar la logística petrolera argentina, descomprimir la saturación de las terminales existentes y posicionar al país como un exportador confiable y de gran escala para los próximos años.
+<p class="text-gray-700 leading-relaxed mb-4">Los seis gigantes de Punta Colorada son algo más que depósitos de crudo. Son el eslabón final de una cadena que promete transformar la logística petrolera argentina, descomprimir la saturación de las terminales existentes y posicionar al país como un exportador confiable y de gran escala para los próximos años.</p>
 
-Mientras las grúas continúan su trabajo y las pruebas de hermeticidad se multiplican, la región patagónica se prepara para un nuevo rol. El mar que durante décadas fue testigo de una economía marcada por la pesca y la minería hoy se dispone a recibir, tanque por tanque, el futuro energético que la Argentina comenzó a escribir en Vaca Muerta.
+<p class="text-gray-700 leading-relaxed mb-4">Mientras las grúas continúan su trabajo y las pruebas de hermeticidad se multiplican, la región patagónica se prepara para un nuevo rol. El mar que durante décadas fue testigo de una economía marcada por la pesca y la minería hoy se dispone a recibir, tanque por tanque, el futuro energético que la Argentina comenzó a escribir en Vaca Muerta.</p>
 
 ---
 
-**Fuentes:**
-
-- YPF S.A. — Comunicado de prensa, octubre 2024
-- Ministerio de Energía de Río Negro
-- Secretaría de Minería e Hidrocarburos de la Nación
+<p class="text-xs text-gray-500 italic mt-2 mb-6">
+  Fuente: YPF S.A. — Comunicado de prensa, octubre 2024; Ministerio de Energía de Río Negro; Secretaría de Minería e Hidrocarburos de la Nación.
+</p>
 
 
