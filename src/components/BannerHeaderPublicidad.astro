@@ -1,0 +1,80 @@
+---
+// src/components/BannerHeaderPublicidad.astro
+---
+
+<div class="banner-publicitario-vmos">
+  <div class="banner-badge">ESPACIO DISPONIBLE</div>
+  
+  <p class="banner-mensaje">
+    <strong>SU MARCA EN EL CORAZÓN DE LA INDUSTRIA</strong> — El espacio publicitario más visible de Faro Energético está disponible.
+  </p>
+  
+  <a href="https://wa.me/?text=Hola%2C+vi+el+banner+disponible+en+Faro+Energ%C3%A9tico+y+me+interesa+recibir+informaci%C3%B3n+sobre+las+tarifas+publicitarias+para+mi+empresa." class="banner-cta" target="_blank" rel="noopener noreferrer">
+    Publicitar Aquí 🚀
+  </a>
+</div>
+
+<style>
+  .banner-publicitario-vmos {
+    background-color: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 24px;
+    margin: 10px auto;
+    max-width: 1200px;
+    border-radius: 6px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  .banner-badge {
+    background-color: #fef08a;
+    color: #854d0e;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .banner-mensaje {
+    color: #1e293b;
+    font-size: 0.88rem;
+    margin: 0 15px;
+    line-height: 1.4;
+    text-align: left;
+    flex-grow: 1;
+  }
+  .banner-mensaje strong {
+    color: #0f172a;
+    font-weight: 700;
+  }
+  .banner-cta {
+    background-color: #0284c7;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s ease-in-out;
+  }
+  .banner-cta:hover {
+    background-color: #0369a1;
+    transform: translateY(-1px);
+  }
+  @media (max-width: 768px) {
+    .banner-publicitario-vmos {
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+      padding: 12px;
+    }
+    .banner-mensaje {
+      text-align: center;
+      margin: 5px 0;
+    }
+  }
+</style>

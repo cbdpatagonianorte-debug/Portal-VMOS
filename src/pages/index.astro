@@ -147,7 +147,7 @@ function formatTimeAgo(date: Date) {
         <div class="flex items-center justify-between border-b-2 border-primary pb-2">
           <div class="flex items-center gap-2">
             <span class="inline-block bg-error text-white font-label-ticker text-xs font-bold px-2 py-0.5 tracking-wider rounded-sm live-pulse">
-              ÚLTIMO MOMENTO
+              EN VIVO
             </span>
             <h2 id="heading-ultimas" class="font-sans font-bold text-xl uppercase tracking-tight text-primary">
               Despachos
@@ -324,7 +324,7 @@ function formatTimeAgo(date: Date) {
             Cobertura periodística de alta fidelidad técnica sobre la infraestructura de hidrocarburos, desarrollo de Punta Colorada, el pulso social de Sierra Grande y la transformación costera de Río Negro.
           </p>
         </div>
-        <div class="w-full lg:w-auto flex flex-col sm:flex-row items-center gap-2">
+        <form data-newsletter-form class="w-full lg:w-auto flex flex-col sm:flex-row items-center gap-2">
           <input
             type="email"
             placeholder="Su correo corporativo..."
@@ -332,13 +332,13 @@ function formatTimeAgo(date: Date) {
           />
           <button
             data-newsletter-subscribe
-            class="w-full sm:w-auto px-5 py-2.5 bg-secondary hover:bg-secondary-container text-on-secondary hover:text-on-secondary-fixed font-label-ticker text-sm font-bold uppercase tracking-wider rounded transition-colors whitespace-nowrap shadow"
-            type="button"
+            class="w-full sm:w-auto px-5 py-2.5 bg-secondary hover:bg-secondary-container text-on-secondary hover:text-on-secondary-fixed font-label-ticker text-sm font-bold uppercase tracking-wider rounded transition-colors whitespace-nowrap shadow mt-2 sm:mt-0"
+            type="submit"
           >
             Suscribirse al Boletín
           </button>
           <div data-newsletter-status></div>
-        </div>
+        </form>
       </div>
 
       <!-- Links de navegación de footer -->
@@ -363,6 +363,67 @@ function formatTimeAgo(date: Date) {
       </div>
     </div>
   </footer>
+
+  <!-- Datos de artículos para el buscador -->
+  <script>
+    window.__VMOS_ARTICLES__ = [
+      { title: 'VMOS Movio 15902 Millones Primer Trimestre', description: 'Reporte del primer trimestre del proyecto VMOS', category: 'Economía & Energía', section: 'Punta Colorada & VMOS', tags: ['VMOS', 'energía'], href: '/noticias/vmos-movio-15902-millones-primer-trimestre', readingMinutes: 8 },
+      { title: 'El VMOS entra en su recta final', description: 'Actualización sobre el avance del proyecto', category: 'Punta Colorada & VMOS', section: 'Punta Colorada & VMOS', tags: ['VMOS'], href: '/noticias/el-vmos-entra-en-su-recta-final', readingMinutes: 5 },
+      { title: 'Los Gigantes del VMOS - Tanques Punta Colorada', description: 'Almacenamiento y tanques del proyecto', category: 'Punta Colorada & VMOS', section: 'Punta Colorada & VMOS', tags: ['VMOS', 'tanques'], href: '/noticias/los-gigantes-del-vmos-tanques-punta-colorada', readingMinutes: 6 },
+      { title: 'Playas Doradas - Auge Habitacional', description: 'Crecimiento inmobiliario en Playas Doradas', category: 'Playas Doradas', section: 'Playas Doradas', tags: ['Playas Doradas', 'inmobiliario'], href: '/noticias/playas-doradas-auge-habitacional', readingMinutes: 4 },
+      { title: 'Sierra Grande - Operarios VMOS', description: 'Trabajadores y operarios del proyecto VMOS', category: 'Sierra Grande', section: 'Sierra Grande', tags: ['Sierra Grande', 'VMOS'], href: '/noticias/sierra-grande-operarios-vmos', readingMinutes: 5 },
+      { title: 'Terminal Portuaria VMOS Punta Colorada', description: 'Terminal portuaria y logística del proyecto', category: 'Punta Colorada & VMOS', section: 'Punta Colorada & VMOS', tags: ['VMOS', 'terminal'], href: '/noticias/terminal-portuaria-vmos-punta-colorada', readingMinutes: 7 },
+    ];
+  </script>
+
+  <!-- Modales globales -->
+  <div id="search-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black/50 backdrop-blur-sm">
+    <div class="relative w-full max-w-lg p-4 md:p-6 bg-surface rounded-xl shadow-2xl">
+      <div class="flex justify-between items-start mb-4">
+        <h2 class="text-xl font-bold text-primary">Buscar noticias</h2>
+        <button id="search-close" class="p-2 text-gray-400 hover:text-primary">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <input
+        id="search-input"
+        type="text"
+        placeholder="Buscar por título, categoría o contenido..."
+        class="w-full px-4 py-3 mb-4 bg-surface-container-lowest border border-outline-variant rounded text-primary focus:outline-none focus:ring-2 focus:ring-secondary"
+      />
+      <div id="search-results" class="max-h-[400px] overflow-y-auto space-y-2 hidden"></div>
+    </div>
+  </div>
+
+  <div id="notifications-dropdown" class="fixed top-16 right-4 z-50 w-64 bg-surface rounded-xl shadow-2xl border border-outline-variant hidden">
+  </div>
+
+  <div id="newsletter-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black/50 backdrop-blur-sm">
+    <div class="relative w-full max-w-md p-4 md:p-6 bg-surface rounded-xl shadow-2xl">
+      <div class="flex justify-between items-start mb-4">
+        <h2 class="text-xl font-bold text-primary">Boletín VMOS</h2>
+        <button onclick="closeNewsletterModal()" class="p-2 text-gray-400 hover:text-primary">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <p class="mb-4 text-gray-600">Reciba actualizaciones semanales sobre la industria energética y desarrollos regionales.</p>
+      <form class="space-y-4">
+        <input
+          data-newsletter-email
+          type="email"
+          placeholder="Su correo corporativo..."
+          class="w-full px-4 py-3 bg-surface-container-lowest border border-outline-variant rounded text-primary focus:outline-none focus:ring-2 focus:ring-secondary"
+          required
+        />
+        <button
+          type="submit"
+          class="w-full bg-primary hover:bg-primary-container text-on-primary font-label-ticker text-xs font-bold uppercase tracking-wider rounded transition-colors py-3"
+        >
+          Suscribirse
+        </button>
+      </form>
+    </div>
+  </div>
 
 </body>
 </html>

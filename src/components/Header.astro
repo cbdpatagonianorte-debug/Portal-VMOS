@@ -1,7 +1,7 @@
 ---
 /**
  * Header.astro — Cabecera del portal Faro Energético / Noticias VMOS
- * Incluye: barra utilitaria superior, banner institucional y navbar sticky con logo SVG inline.
+ * Incluye: barra utilitaria superior, banner publicitario y navbar sticky con logo SVG inline.
  */
 
 interface Props {
@@ -9,6 +9,8 @@ interface Props {
 }
 
 const { activeSection = 'punta-colorada' } = Astro.props;
+
+import BannerHeaderPublicidad from './BannerHeaderPublicidad.astro';
 
 const navLinks = [
   { href: '/categoria/punta-colorada-y-vmos', label: 'Punta Colorada & VMOS' },
@@ -68,26 +70,10 @@ const navLinks = [
 </aside>
 
 <!-- =========================================================== -->
-<!-- 2. BANNER INSTITUCIONAL                                       -->
+<!-- 2. BANNER PUBLICITARIO (espacio disponible)                 -->
 <!-- =========================================================== -->
 <div class="w-full bg-surface-container-low border-b border-outline-variant/40 py-2.5 px-4">
-  <div class="max-w-[1100px] mx-auto bg-surface-container-lowest border border-outline-variant flex items-center justify-between px-4 py-2 text-xs shadow-sm">
-    <div class="flex items-center gap-3">
-      <span class="bg-primary text-on-primary font-label-ticker text-[10px] px-1.5 py-0.5 tracking-wider rounded">
-        SPONSOR INSTITUCIONAL
-      </span>
-      <span class="font-sans font-semibold text-primary tracking-tight">
-        YPF &amp; Consorcio VMOS — Conectando la Cuenca Neuquina con el Atlántico
-      </span>
-    </div>
-    <a
-      class="hidden sm:inline-flex items-center gap-1 font-label-ticker text-secondary hover:text-primary font-bold transition-colors"
-      href="#vmos-info"
-    >
-      <span>Conocer Proyecto</span>
-      <span class="material-symbols-outlined text-sm">arrow_forward</span>
-    </a>
-  </div>
+  <BannerHeaderPublicidad />
 </div>
 
 <!-- =========================================================== -->
@@ -120,6 +106,7 @@ const navLinks = [
       <!-- Acciones de utilidad -->
       <div class="flex items-center gap-2 md:gap-3">
         <button
+          data-search-toggle
           aria-label="Buscar noticias e informes"
           class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors flex items-center justify-center"
           type="button"
@@ -128,20 +115,22 @@ const navLinks = [
         </button>
 
         <button
+          data-notifications-toggle
           aria-label="Alertas del Golfo"
           class="relative p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors hidden sm:flex items-center justify-center"
           type="button"
         >
           <span class="material-symbols-outlined text-xl">notifications</span>
-          <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full ring-2 ring-surface"></span>
+          <span data-notif-badge class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full ring-2 ring-surface"></span>
         </button>
 
         <button
-          aria-label="Información Climatológica"
+          data-theme-toggle
+          aria-label="Cambiar modo oscuro"
           class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded transition-colors hidden md:flex items-center justify-center"
           type="button"
         >
-          <span class="material-symbols-outlined text-xl">wb_sunny</span>
+          <span class="material-symbols-outlined text-xl theme-icon">wb_sunny</span>
         </button>
 
         <div class="h-6 w-px bg-outline-variant hidden sm:block"></div>
@@ -154,6 +143,7 @@ const navLinks = [
         </button>
 
         <button
+          data-newsletter-subscribe
           class="inline-flex items-center px-4 py-1.5 bg-primary hover:bg-primary-container text-on-primary font-label-ticker text-xs font-medium rounded transition-colors shadow-sm"
           type="button"
         >
